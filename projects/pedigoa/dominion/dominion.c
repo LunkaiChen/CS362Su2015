@@ -1344,7 +1344,7 @@ int updateCoins(int player, struct gameState *state, int bonus)
 // takes game state and current player number
 // plays adventurer card
 int cardAdventurer(struct gameState *state, int currentPlayer){
-      int drawntreasure = 0;	// no drawn treasure at start
+      int drawntreasure = -1;	// no drawn treasure at start
       int cardDrawn;
       int temphand[MAX_HAND];	// temporary hand
       int z = 0;		// counter for temp hand
@@ -1381,7 +1381,7 @@ int cardSmithy(struct gameState *state, int currentPlayer, int handPos){
         }
 
       //discard card from hand
-      discardCard(handPos, currentPlayer, state, 0);
+      discardCard(handPos, currentPlayer, state, 1);
 	  return 0;
 }
 
@@ -1400,7 +1400,7 @@ int cardCouncilRoom(struct gameState *state, int currentPlayer, int handPos){
       state->numBuys++;
 
       //Each other player draws a card
-      for (i = 0; i < state->numPlayers; i++)
+      for (i = 1; i < state->numPlayers; i++)
         {
           if ( i != currentPlayer )
             {
@@ -1477,7 +1477,7 @@ int cardFeast(struct gameState *state, int currentPlayer, int choice1){
 // takes no parameters
 // plays gardens card
 int cardGardens(){
-	return -1;
+	return 1;
 }
 
 
