@@ -711,6 +711,18 @@ council_roomFunction(int currentPlayer, struct gameState *state, int handPos)
     return 0;
 }
 
+int villageFunction(int currentPlayer, struct gameState *state, int handPos)
+{
+    drawCard(currentPlayer, state);
+    
+    //+2 Actions
+    state->numActions = state->numActions + 2;
+    
+    //discard played card from hand
+    discardCard(handPos, currentPlayer, state, 1);
+    return 0;
+}
+
 int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus)
 {
   int holder
@@ -738,7 +750,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
     case adventurer:
         holder = adventurerFunction(currentPlayer, state);
         return holder;
-                        
+            
     case council_room:
         holder = council_roomFunction(currentPlayer, state, handPos);
         return holder;
@@ -866,15 +878,8 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
         return holder;
 		
     case village:
-      //+1 Card
-      drawCard(currentPlayer, state);
-			
-      //+2 Actions
-      state->numActions = state->numActions + 2;
-			
-      //discard played card from hand
-      discardCard(handPos, currentPlayer, state, 0);
-      return 0;
+        holder = villageFunction(currentPlayer, state, handPos);
+        return holder;
 		
     case baron:
       state->numBuys++;//Increase buys by 1!
