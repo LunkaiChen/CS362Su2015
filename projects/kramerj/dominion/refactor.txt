@@ -1,3 +1,6 @@
 Smithy:
-I simply created a function and the copied the existing code over. 
+I simply created a function and then copied the existing code over. 
 Bug: I changed the for loop from i < 3 to i <= 3
+
+
+
