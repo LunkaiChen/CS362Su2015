@@ -1,0 +1,67 @@
+Documentation by Eric Miller for CS 362
+
+Smithy:
+Variable of enum type CARD declared in dominion.h. Used as the first argument in the 
+function 'cardeffect' to enable smithy effects in-game. This triggers a switch statement 
+(case:smithy) to call the function drawcard() 3 times (with currentPlay + state as arguments)
+inside of a loop in order to add three cards to the player's hand. After this, the 
+discard function is called and the smithy's effects end.
+
+
+
+Adventurer:
+Variable of enum type CARD declared in dominion.h. Used as the first argument in the 
+function 'cardeffect' to enable adventuerer effects in-game. This triggers a switch statement 
+(case:adventurer)that starts a while loop that ends when the int 'drawntreasure' (starts at 0)
+is equal to two. This loop first checks the 'state' struct data on the size of the current
+player's deck to check if it is empty. Should it be empty, the shuffle function is called
+for the current player.
+
+Once the deck size is confirmed to be greater than 0,  the drawcard function is called with 
+the int 'cardDrawn' set to the result (the result being the top card of the player hand). If
+cardDrawn is equal to a treasure type, the  int 'drawntreasure' is incremented . If it is not,
+then the drawn topcard is removed by decrementing the player handCount.
+
+Once the loop has ended with two treasure cards drawn, the counter for the players temporary hand
+'z' is decremented in a while loop until it reaches 0. During that loop, all cards in play
+that have been drawn are discarded by changing the state struct's discard count for the current
+player.
+
+
+discardCard:
+
+Arguments: (int handPos, int currentPlayer, struct gameState *state, int trashFlag)
+
+Function that reduces the number of cards in the player's hand and adds cards to the played 
+pile. Arguments are the position of the card in the player's hand, the current player ID,
+the state struct, and a flag for marking a card is to be trashed. 
+
+If the trash flag is set to 0, then within the state struct the top of their played pile
+(contained in the cariable playedcardCount) is set to the card passed into the 
+handposition entered into the function arguments.
+
+from there the hand position for the played card is set to -1. Another 'if' statement is called
+to see if the last card in the the user hand is played, or if there is only one card left in the
+user hand. Regardless of which case is true, the total number of cards in the current player's hand
+is decremented.
+
+If however niether of the prior two conditions (last card in hand / only card) are true,
+the last card in the player's hand replaces the discarded card in the state strcut
+for the current player, the (new) last card is set to -1, then the hand count for the current 
+player is decremented.
+
+
+
+updatecoins:
+
+Arguments: (int player, struct gameState *state, int bonus)
+
+Function that increases the number of coins for a player. The arguments are the player ID,
+the ste struct with the game/player information, and the bonus to add to the player's
+coin count.
+
+When the function starts, the coin count is initially reset to 0 in the state struct.
+Once this is reset, a 'for' loop cycles through a player's hand array. At each index
+if the card is either a copper, silver, or gold, the equivlent value of that metal
+is added to the coin count of the state struct. Once the loop is finished, any bonus 
+is added and the function finishes.
