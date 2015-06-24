@@ -2,5 +2,9 @@ Smithy:
 I simply created a function and then copied the existing code over. 
 Bug: I changed the for loop from i < 3 to i <= 3
 
+Adventurer:
+I copied over the logic of the code, plus 3 varaibles: cardDrawn, temphand[], and drawntreasure. 
+Bug: In the second if statement and the first else, right after where temphand[z]=cardDrawn, the state->handCount[currentPlayer]—- is changed to state->handCount[currentPlayer]++. With —- it is supposed to remove the top of the card, but with ++ it will do the opposite. 
+
 
 
