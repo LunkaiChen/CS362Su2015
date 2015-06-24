@@ -14,5 +14,8 @@ Village:
 I, once again, simply copied the code over and created the function. I passed in currentPlayer, state pointer, and handPos. 
 Bug: In the discardCard function I changed the zero to one. Instead of discardCard(handPos, currentPlayer, state, 0) it is now discardCard(handPos, currentPlayer, state, 1).
 
+Minion:
+I copied over the code / logic from the case statement. I passed into the function currentPlayer, gameState *state, choice1, choice2, handPos.
+Bug: In the first else if statement I changed choice2 to choice1. 
 
 
