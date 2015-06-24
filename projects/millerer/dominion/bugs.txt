@@ -1,0 +1,5 @@
+Note: Bug information included in refactor.txt
+
+bug1: 
+
+bug2: 
