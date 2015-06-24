@@ -1,0 +1,54 @@
+Refactor by Eric Miller
+
+
+For my changing of the code, I refactored adventurer, smithy, village, great_hall, and remode 
+and made them into their own functions.
+
+Each function is called by the original switch statement, however all code has now been moved 
+to the actual funtion definitions.
+
+Adventurer:
+int adventure_card(int currentPlayer, struct gameState *state);
+arguments are the current player ID and state structure. These are passed into the function
+from within cardEffect.
+
+Bugs added:
+I changed the condition of the original 'while' loop to break when drawntreasures is no longer 
+greater than 2. In addition, I also changed the 'if' condition to increase the treasure
+count to do so only when a card is copper AND silver AND gold. As such the debugger will need
+to first fix the 'while' loop conditions, then go on to change the conditionals from 'AND' to 
+'OR'. If they only fix the loop, then an overflow situation will occur.
+
+
+
+Smithy:
+smithy_card(int handPos,int currentPlayer, struct gameState *state);
+arguments are the current hand position, player ID and state structure. These are passed 
+into the function from within cardEffect.
+
+Bugs added: Changed the trash flag in the 'discardCard' function call from 0 to 1.
+
+Village:
+int village_card(int handPos,int currentPlayer, struct gameState *state);
+arguments are the current hand position, player ID and state structure. These are passed 
+into the function from within cardEffect.
+
+Bugs added: used the looping draw function from the smithy card rather than a single
+draw.
+
+
+Great_hall:
+great_hall_card (int handPos,int currentPlayer, struct gameState *state);
+arguments are the current hand position, player ID and state structure. These are passed 
+into the function from within cardEffect.
+
+Bugs added: None
+
+
+Remodel:
+int remodel_card (int choice1, int choice2, int handPos,int currentPlayer, struct gameState *state);
+arguments are the current 2 player choices, hand position, player ID and state structure. These 
+are passed into the function from within cardEffect.
+
+Bugs added:
+swapped values for parameters choice1 and choice2 inside of the function/
