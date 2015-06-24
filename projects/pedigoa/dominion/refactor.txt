@@ -1,0 +1,15 @@
+Adam Pedigo
+CS362.400
+refactor.txt
+
+------------
+Assignment 2
+------------
+
+cards refactored: adventurer, smithy, council_room, feast, garden
+
+For each card refactor, existing code was copied into a separate function.
+Necessary parameters were added for each function (mostly game state, player number, etc).
+Unnecessary variables existing in cardEffect() were commented out and equivalent local
+variables added to the refactored functions.
+
