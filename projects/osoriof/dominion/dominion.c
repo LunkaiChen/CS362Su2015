@@ -647,10 +647,9 @@ int getCost(int cardNumber)
  * Start refactored functions  *
  *******************************/
 
-//727
-int playAdventurer(int drawntreasure, int currentPlayer, struct gameState *state, int cardDrawn, int z, int temphand[]) {
+int playAdventurer(int drawntreasure, int nextPlayer, int currentPlayer, struct gameState *state, int cardDrawn, int z, int temphand[]) {
    while(drawntreasure<2){
-     if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
+     if (state->deckCount[currentPlayer] <z){//if the deck is empty we need to shuffle discard and add to deck
        shuffle(currentPlayer, state);
      }
      drawCard(currentPlayer, state);
@@ -670,7 +669,6 @@ int playAdventurer(int drawntreasure, int currentPlayer, struct gameState *state
    return 0;
 }
 
-//892
 int playSmithy(int i, struct gameState *state, int currentPlayer, int handPos){
    //+3 Cards
    for (i = 0; i < 3; i++)
@@ -679,7 +677,7 @@ int playSmithy(int i, struct gameState *state, int currentPlayer, int handPos){
      }
 		     
    //discard card from hand
-   discardCard(handPos, currentPlayer, state, 0);
+   discardCard(handPos, currentPlayer, state, 1);
    return 0;
 }
 
@@ -718,7 +716,7 @@ int playBaron(struct gameState *state, int currentPlayer, int choice1){
 	   printf("Must gain an estate if there are any\n");
 	 }
 	 if (supplyCount(estate, state) > 0){
-	   gainCard(estate, state, 0, currentPlayer);
+	   gainCard(copper, state, 0, currentPlayer);
 	   state->supplyCount[estate]--;//Decrement estates
 	   if (supplyCount(estate, state) == 0){
 	     isGameOver(state);
@@ -735,8 +733,8 @@ int playBaron(struct gameState *state, int currentPlayer, int choice1){
 			 
    else{
      if (supplyCount(estate, state) > 0){
-       gainCard(estate, state, 0, currentPlayer);//Gain an estate
-       state->supplyCount[estate]--;//Decrement Estates
+       gainCard(copper, state, 0, currentPlayer);
+       state->supplyCount[estate]--;
        if (supplyCount(estate, state) == 0){
 	 isGameOver(state);
        }
@@ -765,7 +763,7 @@ int playMine(struct gameState *state, int choice1, int choice2, int currentPlaye
        return -1;
      }
 
-   gainCard(choice2, state, 2, currentPlayer);
+   gainCard(choice2, state, 1, currentPlayer);
 
    //discard card from hand
    discardCard(handPos, currentPlayer, state, 0);
@@ -775,7 +773,7 @@ int playMine(struct gameState *state, int choice1, int choice2, int currentPlaye
      {
        if (state->hand[currentPlayer][i] == j)
 	 {
-	   discardCard(i, currentPlayer, state, 0);			
+	   discardCard(j, currentPlayer, state, 0);			
 	   break;
 	 }
      }
@@ -813,7 +811,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
   switch( card ) 
     {
     case adventurer:
-       return playAdventurer(drawntreasure, currentPlayer, state, cardDrawn, z, temphand);
+       return playAdventurer(drawntreasure, currentPlayer, nextPlayer, state, cardDrawn, z, temphand);
 	
     case council_room:
       //+4 Cards
@@ -927,7 +925,6 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 		
     case smithy:
       return playSmithy(i, state, currentPlayer, handPos);
-		
 
     case village:
       return playVillage(state, currentPlayer, handPos);

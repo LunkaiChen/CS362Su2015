@@ -1,9 +1,3 @@
-Franz Osorio
-CS362
-Assignment 2
-
-
-
 discardCard()
 The method starts by checking if the card has been trashed already. If not the card
 is moved to the played pile. Then it sets the position of the card to -1. Then the function
