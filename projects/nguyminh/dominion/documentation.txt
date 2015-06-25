@@ -1,0 +1,39 @@
+case smithy -
+
+ 	An action card when played, allows current player to draw 3 more additional cards in their hands, regardless
+	of how many cards are in their hands already.  At the end of the turn, the entire hand is still discarded
+	with the discardCard function.
+
+
+case adventurer-
+	
+	an action card that when played, searches through your deck for a treasure card.  Upon flipping through your deck
+	and finding a treasure card, it draws this card, and adds to your hand.  If the card drawn is not a treasure card, 
+	it is removed from hand until a treasure card is drawn. 
+
+
+int discardCard() -
+	
+	Preconditions: Card is in players 'hands'. clean-up portion of gameState or a forced discard in gameState. Position
+	of which card in player's hand is ready to be discarded.
+	
+	Postconditions: Card is moved to played pile if  trashFlag is 0. Card is moved to trash pile, if trashFlag is 1
+	
+	Parameters: int handpos = Position of card in hand array
+		    int currentPlayer = player that is discarding
+		    struct gameState *state = State of the card (action phase, buy phase, clean-up phase)
+		    int trashFlag = check if card should go to played pile or trashed pile
+
+
+
+int updateCoins() -
+
+	Preconditions: Towards the end of a turn of a player, player finished with action and buy phases. Last thing that is
+			done for the players term.  
+
+	Postconditions: Coin card is added to player's deck depending on the state of the players hand (copper, silver, or gold)
+
+	parameters: int player = current player
+		    struct gameState *state = state of the game for the player
+		    int bonus = Any bonuses from action cards
+	
