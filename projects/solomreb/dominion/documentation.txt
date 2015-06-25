@@ -1,0 +1,12 @@
+Documentation.txt - Becky Solomon
+
+Submit a file called documentation.txt that contains documentation of smithy, adventurer cards. Documentation should contain your understanding of smithy and adventurer cards (code). It should also contain documentation of your understanding of discardCard() and updateCoins() method.  Keep your documentation short, though there is no upper limit. Documentation.txt file should contain at least 100 words. 
+
+Smithy card
+
+Adventurer card
+
+discardCard()
+
+updateCoins()
+
