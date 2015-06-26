@@ -1,28 +1,38 @@
+Seth Endriss-Dygert
+endrisss
+06/24/2015
+CS 362 Summer 2015
+Assignment 2
+refactor.txt
+
+*************************************************
 smithyCardEffect
 does not discard a card
 
+*************************************************
 adventurerCardEffect
 while loop is <= instead of <
-handPos is not needed
 cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer-1]]; instead of [state->handCount[currentPlayer]-1];
 state->handCount[currentPlayer--]; instead of state->handCount[currentPlayer]--;
 
+*************************************************
 stewardCardEffect
 in else statement call discardCard on choice2 twice
 handPos is not needed
 parameters passed in the wrong order
 
+*************************************************
 cutpurseCardEffect
 semicolon on inner for loop
 inner for loop increments i instead of j
 if statement checking for copper has i, j reversed
 
-
+*************************************************
 seaHagCardEffect
 discardCount is decremented instead of incremented
 deckCount is incremented instead of decremented
 
 
 
-add comments to dominion.c and refactor.txt
-need to add document.txt, refactor.txt and update dominion.c
+add comments to refactor.txt
+update git
