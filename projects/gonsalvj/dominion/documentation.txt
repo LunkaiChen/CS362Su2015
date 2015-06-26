@@ -1,0 +1,32 @@
+smitty card:
++3 cards
+-Draw three cards from the current players deck (and update game state)
+-discard current card of current player (smitty card) into player discarded pile
+
+adventurer card:
+Reveals cards from your deck until you reveal 2 Treasure cards that goes into your hand, other cards are discarded
+-check if current player's deck is empty, if so, shuffle discarded pile and add to deck
+-draw a card from current player's deck, if card is a Treasure card (copper, silver, gold), increment drawntreasure variable (int), if card is not a treasure card, add card to temphand, decrement handCount of current player (remove most recently drawn card), and decrement temphand counter
+--if drawn treasure is less than 2, repeat steps
+discard all cards in temphand (discard all non-treasure cards that were drawn).
+
+/*Function: discardCard()
+ *Description: Remove card from user's hand, and place in played card array or  *trash (set card to -1)
+ *Params:
+ *int handPos: index of card in player's hand
+ *int current player: the player whose turn it is
+ *gameState: state of game
+ *int trashFlag: < 1 card not trashed, >=1 trash card
+ */
+Actual Method Flow:
+If card is not trashed add card to played pile
+Set the current player's card at specified index (handPos) to -1
+If the index of the card (handPos) is equal to number of cards in current players hand minus 1, or if number of cards in hand is equal to one, decrement handCount of current user (number of cards in hand)
+Replace discarded card with the card at the index before it
+Set last card to -1 (because we have moved the last card to the discarded card's index in the hand)
+decrement handCount of current user (number of cards in hand)
+
+
+
+
+

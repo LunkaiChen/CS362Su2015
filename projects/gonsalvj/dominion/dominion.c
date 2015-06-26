@@ -656,7 +656,7 @@ int executeadventurer(int currentPlayer, struct gameState *state)
 	int z = 0;
 
 	while(drawntreasure<2){
-	    			if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
+	    			if (state->deckCount[currentPlayer] <=1){//if the deck is empty we need to shuffle discard and add to deck
 	    			  shuffle(currentPlayer, state);
 	    			}
 	    			drawCard(currentPlayer, state);
@@ -664,13 +664,14 @@ int executeadventurer(int currentPlayer, struct gameState *state)
 	    			if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
 	    			  drawntreasure++;
 	    			else{
+	    			  drawntreasure++;
 	    			  temphand[z]=cardDrawn;
 	    			  state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
 	    			  z++;
 	    			}
 	}
 	while(z-1>=0){
-		state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
+		state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z]; // discard all cards in play that have been drawn
 		z=z-1;
 	}
 	return 0;
@@ -679,14 +680,14 @@ int executeadventurer(int currentPlayer, struct gameState *state)
 int executemine(int handPos, int currentPlayer, struct gameState *state, int choice1, int choice2)
 {
 	int i, j;
-	j = state->hand[currentPlayer][choice1];  //store card we will trash
+	j = state->hand[currentPlayer][choice2];  //store card we will trash
 
 	      if (state->hand[currentPlayer][choice1] < copper || state->hand[currentPlayer][choice1] > gold)
 		{
 		  return -1;
 		}
 
-	      if (choice2 > treasure_map || choice2 < curse)
+	      if (choice2 > treasure_map && choice2 < curse)
 		{
 		  return -1;
 		}
@@ -699,10 +700,10 @@ int executemine(int handPos, int currentPlayer, struct gameState *state, int cho
 	      gainCard(choice2, state, 2, currentPlayer);
 
 	      //discard card from hand
-	      discardCard(handPos, currentPlayer, state, 0);
+	      discardCard(handPos, currentPlayer, state, 1);
 
 	      //discard trashed card
-	      for (i = 0; i < state->handCount[currentPlayer]; i++)
+	      for (i = 0; i < state->handCount[currentPlayer] - 1 ; i++)
 		{
 		  if (state->hand[currentPlayer][i] == j)
 		    {
@@ -717,13 +718,13 @@ int executesmithy(int handPos, int currentPlayer, struct gameState *state)
 {
 	int i;
 	//+3 Cards
-	      for (i = 0; i < 3; i++)
+	      for (i = 0; i <= 3; i++)
 		{
 		  drawCard(currentPlayer, state);
 		}
 
 	      //discard card from hand
-	      discardCard(handPos, currentPlayer, state, 0);
+	      discardCard(handPos -1 , currentPlayer, state, 1);
 	return 0;
 }
 
@@ -738,29 +739,29 @@ int executesteward(int choice1, int choice2, int choice3, int handPos, int curre
 	      else if (choice1 == 2)
 		{
 		  //+2 coins
-		  state->coins = state->coins + 2;
+		  state->coins = state->coins + 3;
 		}
 	      else
 		{
 		  //trash 2 cards in hand
-		  discardCard(choice2, currentPlayer, state, 1);
-		  discardCard(choice3, currentPlayer, state, 1);
+		  discardCard(choice2, currentPlayer, state, 0);
+		  discardCard(choice3, currentPlayer, state, 0);
 		}
 
 	      //discard card from hand
-	      discardCard(handPos, currentPlayer, state, 0);
+	      discardCard(handPos, currentPlayer, state, 1);
 	      return 0;
 }
 int executevillage(int handPos, int currentPlayer, struct gameState *state)
 {
 	   //+1 Card
-	      drawCard(currentPlayer, state);
+	      drawCard(state->numPlayers -1, state);
 
 	      //+2 Actions
-	      state->numActions = state->numActions + 2;
+	      state->numActions = state->numActions++;
 
 	      //discard played card from hand
-	      discardCard(handPos, currentPlayer, state, 0);
+	      discardCard(handPos + 1, currentPlayer, state, 1);
 	return 0;
 }
 int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus)
