@@ -1,0 +1,27 @@
+Laura Armstrong
+CS 362
+Refactor.txt
+
+    The pieces of code that I changed where adventurer, council room, smithy, village, and great hall.  These 
+pieces were placed into their own functions in dominion.c.  The individual functions are called in the original
+switch statement, but the function definitions are placed in a separate area of code inside the actual functions
+that were created.  
+
+    Adventurer is now in a function called int adventurer_function that uses the arguments int currentPlayerand 
+struct gameState *state.  Bugs added:  the while loop was changed so that it will loop while drawntreasure is 
+less than 3 instead of 2 and they conditional statement was changed so that if a copper, silver, or gold card is
+drawn the drawntreasure amount will decrement instead of increment. 
+
+    Council room is now a function called int council_room_function that uses the arguments int handPos and 
+struct gameState *state.  Bugs added:  the for loop was changed so that instead of drawing and adding 4 cards, 
+the player will only get to add 3 cards.  
+
+    Smithy is now in a function called int smithy_function that uses the arguments int handPos, int currentPlayer,
+and struct gameState *state.  Bugs added:  I changed the for loop so that instead of drawing and adding 3 cards,
+the player will now get to add 4 cards to the hand. 
+
+    Village is now in a function called int village_function that uses the arguments int handPos, int currentPlayer,
+and struct gameState *state.  Bugs added: instead of adding 2 actions, the adventurer card will add 4 actions.  
+
+    Great hall is now in a function called int great_hall_function that uses the arguments int handPos, currentPlayer,
+and struct gameState *state.  Bugs added: the trash flag in the discardCard function was changed from 0 to 1. 
