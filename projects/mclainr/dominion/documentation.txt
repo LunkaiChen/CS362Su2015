@@ -1,0 +1,12 @@
+Renee McLain
+CS362 Documentation.txt
+Submit a file called documentation.txt that contains documentation of smithy, adventurer cards. Documentation should contain your understanding of smithy and adventurer cards (code). It should also contain documentation of your understanding of discardCard() and updateCoins() method.  Keep your documentation short, though there is no upper limit. Documentation.txt file should contain at least 100 words. 
+
+Smithy: Smithy is an action card that when played gives you an extra 3 cards to add to your hand.  This is an excellent card and should be purchased as soon as the game begins.
+
+Adventurer cards: Adventurer is an action card when played allows you to pick cards from your unused deck until you get 2 treasure cards.  Then you get to keep the treasure cards in your hand to spend but you have to discard the other revealed cards.
+
+discardCard(): This function discards cards from the players hand when called.  As arguments it takes the struct and these variables: handPos(the position of the hand of the card to return), currentPlayer(tells which player is playing) and trashFlag(flags the discarded card as trash). It takes no dependencies and has no data structures and returns 0 upon success.
+
+updateCoins(): Returns the total amount of all of the coins being held in the current players hand to spend during the "spend treasures" turn. As arguments it takes teh struct gameState, as well as the variables player(tells which player is playing) and bonus (any bonus coins that were added as a result of playing an action card). It uses i as a data structure, it has a dependency of dominion.h, and returns 0 upon success.
+
