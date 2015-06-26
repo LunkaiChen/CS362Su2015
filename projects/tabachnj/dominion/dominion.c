@@ -669,9 +669,9 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 
   int tributeRevealedCards[2] = {-1, -1};
   int temphand[MAX_HAND];// moved above the if statement
-  int drawntreasure=0;
-  int cardDrawn;
-  int z = 0;// this is the counter for the temp hand
+  //int drawntreasure=0;
+  //int cardDrawn;
+  //int z = 0;// this is the counter for the temp hand
   if (nextPlayer > (state->numPlayers - 1)){
     nextPlayer = 0;
   }
@@ -681,7 +681,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
   switch( card ) 
   {
     case adventurer:
-      playAdventurer(temphand[], state, currentPlayer);
+      playAdventurer(temphand, state, currentPlayer);
       return 0;
       
     case council_room:
@@ -813,7 +813,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
     
     case baron:
-      playBaron(currentPlayer, state);
+      playBaron(currentPlayer, state, choice1);
       return 0;
     
     case great_hall:
@@ -1241,15 +1241,19 @@ void playAdventurer(int temphand[], struct gameState *state, int currentPlayer)
 {
   int z = 0;
   int drawntreasure = 0;
-
+  int cardDrawn;
   while(drawntreasure<2){
-    if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
+    if (state->deckCount[currentPlayer] <4){//if the deck is empty we need to shuffle discard and add to deck
       shuffle(currentPlayer, state);
     }
     drawCard(currentPlayer, state);
     cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
     if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
-      drawntreasure++;
+      if (cardDrawn == copper)
+      {
+        drawntreasure++;
+      }
+      
     else{
       temphand[z]=cardDrawn;
       state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
@@ -1272,7 +1276,7 @@ void playSmithy(int currentPlayer, struct gameState *state, int handPos)
   }
   
   //discard card from hand
-  discardCard(handPos, currentPlayer, state, 0);
+  discardCard(handPos, currentPlayer, state, 1);
 }
 
 void playVillage(int currentPlayer, struct gameState *state, int handPos)
@@ -1284,7 +1288,7 @@ void playVillage(int currentPlayer, struct gameState *state, int handPos)
   state->numActions = state->numActions + 2;
   
   //discard played card from hand
-  discardCard(handPos, currentPlayer, state, 0);
+  discardCard(handPos + 1, currentPlayer, state, 1);
 }
 
 void playBaron(int currentPlayer, struct gameState *state, int choice1)
@@ -1303,7 +1307,7 @@ void playBaron(int currentPlayer, struct gameState *state, int choice1)
         }
         state->hand[currentPlayer][state->handCount[currentPlayer]] = -1;
         state->handCount[currentPlayer]--;
-        card_not_discarded = 0;//Exit the loop
+        card_not_discarded = 1;//Exit the loop
       }
       else if (p > state->handCount[currentPlayer]){
         if(DEBUG) {
