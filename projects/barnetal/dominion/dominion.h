@@ -128,19 +128,4 @@ int getWinners(int players[MAX_PLAYERS], struct gameState *state);
 /* Set array position of each player who won (remember ties!) to
    1, others to 0 */
 
-int Adventurer_Ref(int currentPlayer, struct gameState *state);
-/* This function is the adventurer card moved out of the switch to it's own function */
-
-int Smithy_Ref(int handPos, int currentPlayer, struct gameState *state);
-/* This function is the smithy card moved out of the switch to it's own function */
-
-int Feast_Ref(int currentPlayer, int choice1, struct gameState *state);
-/* This function is the Feast card moved out of the switch to it's own function*/
-
-int CouncilRoom_Ref(int currentPlayer, int handPos, struct gameState *state);
-/* This function is the Council Room card moved out of the switch to it's own function */
-
-int Mine_Ref(int currentPlayer, int handPos, int choice1, int choice2, struct gameState *state);
-/* This function is the Mine card moved out of the switch to it's own function */
-
 #endif
