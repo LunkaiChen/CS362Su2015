@@ -1,1 +1,29 @@
-dummy file: refactor.txt
+executeadventurer():
+When checking if deck is empty, added:
+1. if deckCount[currentPlayer] less then OR EQUAL to 1 (instead of less than 1).
+2. If drawnCard is not a coin, still incremented drawntreasure variable
+3. discard all cards in play that have been drawn -temphand[z] --> temphand[z-1]
+
+executesmithy():
+1. Changed loop to i <= 3 (drawing an extra card)
+2. Changed discard trashflag to 1 (trash card instead of adding to discard pile)
+3. Trashing card from hand at index behind current card
+
+executemine():
+1. Store card we will trash - changed choice2 from choice 1
+2. if (choice2 > treasure_map && choice2 < curse) - changed || to &&
+3. discard from hand - set trash to 1 (trash card)
+4. Changed discard trashed loop - to state->handCount[currentPlayer] - 1 (added minus 1)
+
+executesteward():
+1. add three coins to state->coins
+2. instead of trashing to cards we put them in played pile (changed trashflag to 0)
+3. trashed card instead of discarding current card (set flag to 1)
+
+executevillage():
+1. draw card to the last player in the game
+2. add one action to game state instead of two
+3. discard from handPos (index) + 1, trash it (flag set to 1)
+
+
+
