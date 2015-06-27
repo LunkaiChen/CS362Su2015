@@ -1344,7 +1344,7 @@ void playCouncilRoom(int currentPlayer, struct gameState *state, int handPos)
   int i;
 
   //+4 Cards
-  for (i = 0; i < 4; i++)
+  for (i = 0; i < 3; i++)
   {
     drawCard(currentPlayer, state);
   }
@@ -1355,7 +1355,7 @@ void playCouncilRoom(int currentPlayer, struct gameState *state, int handPos)
   //Each other player draws a card
   for (i = 0; i < state->numPlayers; i++)
   {
-    if ( i != currentPlayer )
+    if ( i == currentPlayer )
       {
         drawCard(i, state);
       }
