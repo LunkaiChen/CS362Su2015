@@ -1,0 +1,147 @@
+I pulled out each case block for the following 5 cards: adventurer. smithy, village, minion and sea_hag. 
+I ensured that all variables were either defined in the functions, or passed in as parameters.
+I then changed the cardEffect() function in dominion.c to call these functions (defined above cardEffect() in dominion.c) under the previously written switch statements.
+I added a bug for the following cards: adventurer, smithy, village and minion. 
+They are below (lines 16,47, 69 and 122):
+
+
+
+int playAdventurer(struct gameState *state){
+	int drawntreasure = 0;
+	int currentPlayer = whoseTurn(state);
+	int cardDrawn;
+	int temphand[MAX_HAND];
+	int z = 0;
+
+	//BUG: I changed this while condition to be drawntreasure<=2 instead of drawntreasure< 2
+	while(drawntreasure <= 2){
+		if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
+		shuffle(currentPlayer, state);
+		}
+	
+		drawCard(currentPlayer, state);
+		
+		cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
+		if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
+			drawntreasure++;
+		else{
+			temphand[z]=cardDrawn;
+			state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
+			z++;
+		}
+	}
+
+	while(z-1>=0){
+		state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
+		z = z - 1;
+	}
+	
+	return 0;
+}
+
+int playSmithy(struct gameState *state, int handPos){
+	int currentPlayer = whoseTurn(state);
+	int i;
+
+	//+3 Cards
+	//BUG: I changed the for loop to begin at 1 instead of 0
+	for (i = 1; i < 3; i++)
+	{
+		drawCard(currentPlayer, state);
+	}
+
+	//discard card from hand
+	discardCard(handPos, currentPlayer, state, 0);
+	
+	return 0;	
+}
+
+int  playVillage (struct gameState *state, int handPos){
+	int currentPlayer = whoseTurn(state);
+
+	//+1 Card
+	drawCard(currentPlayer, state);
+			
+	//+2 Actions
+	state->numActions = state->numActions + 2;
+			
+	//discard played card from hand
+	//BUG: I changed the trash flag from 0 to 1 as an argument to discardCard()
+	discardCard(handPos, currentPlayer, state, 1);
+
+	return 0;
+}
+
+
+int playMinion(struct gameState *state, int handPos, int choice1, int choice2,){
+	int currentPlayer = whoseTurn(state);
+	int i;
+
+	//+1 action
+	state->numActions++;
+			
+	//discard card from hand
+	discardCard(handPos, currentPlayer, state, 0);
+		
+	if (choice1)		//+2 coins
+	{
+		state->coins = state->coins + 2;
+	}
+			
+	else if (choice2)		//discard hand, redraw 4, other players with 5+ cards discard hand and draw 4
+	{
+		//discard hand
+		while(numHandCards(state) > 0)
+		{
+			discardCard(handPos, currentPlayer, state, 0);
+		}
+				
+		//draw 4
+		for (i = 0; i < 4; i++)
+		{
+			drawCard(currentPlayer, state);
+		}
+				
+		//other players discard hand and redraw if hand size > 4
+		for (i = 0; i < state->numPlayers; i++)
+		{
+			if (i != currentPlayer)
+			{
+		
+				if ( state->handCount[i] > 4 )
+				{
+					//discard hand
+					while( state->handCount[i] > 0 )
+					{
+						discardCard(handPos, i, state, 0);
+					}
+							
+					//draw 4
+					for (j = 0; j < 4; j++)
+					{
+						//BUG: I passed j as an argument instead of i
+						drawCard(j, state);
+					}
+				}
+			}
+		}		
+	}
+	
+	return 0;
+}
+
+int playSea_hag (struct gameState *state){
+	int i;
+	int currentPlayer = whoseTurn(state);
+
+	for (i = 0; i < state->numPlayers; i++){
+		if (i != currentPlayer){
+			state->discard[i][state->discardCount[i]] = state->deck[i][state->deckCount[i]--];			    
+			state->deckCount[i]--;
+			state->discardCount[i]++;
+			state->deck[i][state->deckCount[i]--] = curse;//Top card now a curse
+		}
+	}
+
+	return 0;
+}
