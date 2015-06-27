@@ -9,18 +9,18 @@ Added call to playSmithy() function at line 876 of dominion.c
 
 Added playAdventurer() function declaration at line 13 of dominion_helpers.h
 Added playAdventurer() function definition at line 659 of dominion.c
-Added call to playAdventurer() function at line 831 of dominion.c
+Added call to playAdventurer() function at line 835 of dominion.c
 
 Added playCouncilRoom() function declaration at line 14 of dominion_helpers.h
-Added playCouncilRoom() function definition at line 685 of dominion.c
-Added call to playCouncilRoom() function at line 835 of dominion.c
+Added playCouncilRoom() function definition at line 687 of dominion.c
+Added call to playCouncilRoom() function at line 839 of dominion.c
 
 Added playFeast() function declaration at line 15 of dominion_helpers.h
-Added playFeast() function definition at line 711 of dominion.c
-Added call to playFeast() function at line 839 of dominion.c
+Added playFeast() function definition at line 714 of dominion.c
+Added call to playFeast() function at line 843 of dominion.c
 
 Added playMine() function declaration at line 16 of dominion_helpers.h
-Added playMine() function definition at line 767 of dominion.c
-Added call to playMine() function at line 846 of dominion.c
+Added playMine() function definition at line 773 of dominion.c
+Added call to playMine() function at line 850 of dominion.c
 
 
