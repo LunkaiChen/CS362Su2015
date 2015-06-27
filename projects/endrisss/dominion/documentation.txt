@@ -20,7 +20,7 @@ Once two treasure cards have been drawn, as indicated by the drawn treasure coun
 
 *************************************************
 discardCard function:
-The discardCard function removes a card from a players hand. The function takes the following parameters:
+The discardCard function removes a card from a player's hand. The function takes the following parameters:
 int handPos: the position of the card within the player's hand
 int currentPlatyer: the current player
 struct gameState *state: a pointer to the structure which represents the games current state
