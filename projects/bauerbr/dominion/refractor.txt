@@ -1,0 +1,25 @@
+The four cards I decided to break down into their own functions are listed below.
+
+Council Room is now the function int council_roomCard(int currentPlayer, struct gameState *state, int handPos)
+Smithy is now the function smithyCard(int currentPlayer, struct gameState *state, int handPos) 
+Adventurer is now the function int adventurerCard(int currentPlayer, struct gameState *state) 
+Steward is now the function int stewardCard(int currentPlayer, struct gameState *state, int choice1, int choice2, int choice3, int handPos) 
+Salvager is now the function int salvagerCard(int currentPlayer, struct gameState *state) 
+
+*********************************************
+BUGS
+ Council Room:
+ - Discards cards instead of draws cards
+ 
+ Smithy:
+ - Draws 4 cards instead of three
+ 
+ Adventurer:
+ - Doesn't discard all the cards in play 
+ 
+ Steward:
+ - No else statement for choice1 == 2
+ 
+ Salvager:
+ - Doesn't trash card properly, instead discards
+ 

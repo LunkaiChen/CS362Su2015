@@ -127,5 +127,15 @@ int scoreFor(int player, struct gameState *state);
 int getWinners(int players[MAX_PLAYERS], struct gameState *state);
 /* Set array position of each player who won (remember ties!) to
    1, others to 0 */
+   
+void smithy_(int handPos, struct gameState *state);
+ 
+void adventurer_(struct gameState *state);
+
+void village_(int handPos, struct gameState *state);
+
+void council_room_(int handPos, struct gameState *state);
+
+void outpost_(struct gameState* state);
 
 #endif
