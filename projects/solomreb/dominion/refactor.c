@@ -3,6 +3,11 @@ Refactor.txt - Becky Solomon
 ========
 Instructions: Pick five cards implemented in dominion.c. Choose 3 cards of your choice and smithy and adventurer cards are mandatory. Refactor the code so that these cards are implemented in their own functions, rather than as part of the switch statement in cardEffect. You should call the functions for these cards in the appropriate place in cardEffect. Check in your changes, with appropriate git commit messages. Document your changes in a text file in your dominion source directory, called “refactor.txt.” Your implementation of at least 4 of these 5 cards should be incorrect in some way, i.e., you should introduce subtle bugs that are hard to catch in your changes. Introducing bugs in smithy and adventurer is mandatory.  Write information of your bugs also in refactor.txt.  Later in this class, other students will test your code, so try to keep your bugs not superficial. Refactored program should compile without any error.
 =======
+Refactored code for smithy, adventurer, council room, feast, and mine so that
+each has its own function rather than as part of switch statement in
+cardEffect. Added declarations to dominion_helpers.h. See specifics below:
+
+
 Added playSmithy() function declaration at line 12 of dominion_helpers.h
 Added playSmithy() function definition at line 646 of dominion.c
 Added call to playSmithy() function at line 876 of dominion.c
@@ -23,4 +28,9 @@ Added playMine() function declaration at line 16 of dominion_helpers.h
 Added playMine() function definition at line 773 of dominion.c
 Added call to playMine() function at line 850 of dominion.c
 
-
+========
+Bugs introduced:
+Changed < to <= in for loop of playSmithy()
+Changed while(drawntreasure<2) to while(drawntreasure>0) in playAdventurer()
+Commented out call to discardCard() in playCouncilRoom()
+Changed while(x==1) to while((x = 1)) in playFeast()

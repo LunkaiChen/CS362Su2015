@@ -646,7 +646,7 @@ int getCost(int cardNumber)
 int playSmithy(int currentPlayer, struct gameState *state, int handPos)
 {
      int i;
-     for (i = 0; i < 3; i++)
+     for (i = 0; i <= 3; i++)
      {
          drawCard(currentPlayer, state);
      }
@@ -663,7 +663,7 @@ int playAdventurer(int currentPlayer, struct gameState *state, int handPos)
      int temphand[MAX_HAND];
      int z = 0; // this is the counter for the temp hand
 		
-     while(drawntreasure<2){
+     while(drawntreasure >= 0){
 	if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
              shuffle(currentPlayer, state);
 	}
@@ -707,7 +707,7 @@ int playCouncilRoom(int currentPlayer, struct gameState *state, int handPos)
    }
 			
    //put played card in played card pile
-   discardCard(handPos, currentPlayer, state, 0);
+  // discardCard(handPos, currentPlayer, state, 0);
      
    return 0;
 }
@@ -729,7 +729,7 @@ int playFeast(int currentPlayer, struct gameState *state, int handPos, int choic
    //Update Coins for Buy
    updateCoins(currentPlayer, state, 5);
    x = 1;//Condition to loop on
-   while( x == 1) {//Buy one card
+   while(( x = 1)) {//Buy one card
 	if (supplyCount(choice1, state) <= 0){
              if (DEBUG)
     		printf("None of that card left, sorry!\n");
