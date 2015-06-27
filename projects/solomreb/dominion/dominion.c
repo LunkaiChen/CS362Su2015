@@ -660,6 +660,7 @@ int playAdventurer(int currentPlayer, struct gameState *state, int handPos)
 {
      int drawntreasure = 0;
      int cardDrawn;
+     int temphand[MAX_HAND];
      int z = 0; // this is the counter for the temp hand
 		
      while(drawntreasure<2){
@@ -711,7 +712,7 @@ int playCouncilRoom(int currentPlayer, struct gameState *state, int handPos)
    return 0;
 }
 
-int playFeast(int currentPlayer, struct gameState *state, int handPos)
+int playFeast(int currentPlayer, struct gameState *state, int handPos, int choice1)
 {
 	//gain card with cost up to 5
 	int i;
@@ -813,16 +814,16 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
   int i;
   int j;
   int k;
-  int x;
+  //int x;
   int index;
   int currentPlayer = whoseTurn(state);
   int nextPlayer = currentPlayer + 1;
 
   int tributeRevealedCards[2] = {-1, -1};
-  int temphand[MAX_HAND];// moved above the if statement
-  int drawntreasure=0;
-  int cardDrawn;
-  int z = 0;// this is the counter for the temp hand
+  //int temphand[MAX_HAND];// moved above the if statement
+  //int drawntreasure=0;
+  //int cardDrawn;
+  //int z = 0;// this is the counter for the temp hand
   if (nextPlayer > (state->numPlayers - 1)){
     nextPlayer = 0;
   }
@@ -840,7 +841,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 			
     case feast:
-      playFeast(currentPlayer, state, handPos);
+      playFeast(currentPlayer, state, handPos, choice1);
       return 0;
 			
     case gardens:
