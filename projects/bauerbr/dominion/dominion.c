@@ -1100,21 +1100,9 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 		
     case salvager:
-      //+1 buy
-      state->numBuys++;
-			
-      if (choice1)
-	{
-	  //gain coins equal to trashed card
-	  state->coins = state->coins + getCost( handCard(choice1, state) );
-	  //trash card
-	  discardCard(choice1, currentPlayer, state, 1);	
-	}
-			
-      //discard card
-      discardCard(handPos, currentPlayer, state, 0);
-      return 0;
-		
+	
+     salvagerCard(currentPlayer, state, choice1, handPos);
+	 
     case sea_hag:
       for (i = 0; i < state->numPlayers; i++){
 	if (i != currentPlayer){
@@ -1266,7 +1254,7 @@ int updateCoins(int player, struct gameState *state, int bonus)
 
 int smithyCard(int currentPlayer, struct gameState *state, int handPos){
 	  //+3 Cards
-      for (i = 0; i < 3; i++)
+      for (i = 0; i < 4; i++)
 	{
 	  drawCard(currentPlayer, state);
 	}
@@ -1280,7 +1268,7 @@ int council_roomCard(int currentPlayer, struct gameState *state, int handPos) {
 	 //+4 Cards
       for (i = 0; i < 4; i++)
 	{
-	  drawCard(currentPlayer, state);
+	  discardCard(currentPlayer, state);
 	}
 			
       //+1 Buy
@@ -1297,9 +1285,9 @@ int council_roomCard(int currentPlayer, struct gameState *state, int handPos) {
 			
       //put played card in played card pile
       discardCard(handPos, currentPlayer, state, 0);
+	  
+	  return 0;
 			
-      return 0;
-	
 }
 
 int stewardCard(int currentPlayer, struct gameState *state, int choice1, int choice2, int choice3, int handPos) {
@@ -1308,11 +1296,6 @@ int stewardCard(int currentPlayer, struct gameState *state, int choice1, int cho
 	  //+2 cards
 	  drawCard(currentPlayer, state);
 	  drawCard(currentPlayer, state);
-	}
-      else if (choice1 == 2)
-	{
-	  //+2 coins
-	  state->coins = state->coins + 2;
 	}
       else
 	{
@@ -1342,14 +1325,26 @@ int adventurerCard(int currentPlayer, struct gameState *state) {
 	  z++;
 	}
       }
-      while(z-1>=0){
-	state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
-	z=z-1;
-      }
       return 0;
 	
 }
-
+int salvagerCard(int currentPlayer, struct gameState *state, int choice1, int handPos) {
+ //+1 buy
+      state->numBuys++;
+			
+      if (choice1)
+	{
+	  //gain coins equal to trashed card
+	  state->coins = state->coins + getCost( handCard(choice1, state) );
+	  //trash card
+	  discardCard(choice1, currentPlayer, state, 0);	
+	}
+			
+      //discard card
+      discardCard(handPos, currentPlayer, state, 0);
+      return 0;
+	  
+}
 
 
 //end of dominion.c

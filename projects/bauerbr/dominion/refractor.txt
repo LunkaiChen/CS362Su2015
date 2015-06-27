@@ -10,7 +10,6 @@ Salvager is now the function int salvagerCard(int currentPlayer, struct gameStat
 BUGS
  Council Room:
  - Discards cards instead of draws cards
- - Missing return statement.
  
  Smithy:
  - Draws 4 cards instead of three
