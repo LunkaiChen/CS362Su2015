@@ -65,7 +65,7 @@ int initializeGame(int numPlayers, int kingdomCards[10], int randomSeed,
         }
     }
 
-/* **************************** initialize card supply ******************************************* */
+/* **************************** initialize card supply **************************************************** */
   
   //set number of Curse cards
   if (numPlayers == 2)
@@ -130,7 +130,7 @@ int initializeGame(int numPlayers, int kingdomCards[10], int randomSeed,
     }
 
  
- /* **************************** set up player decks and hand ******************************************* */
+ /* **************************** set up player decks and hand ********************************************** */
   //set player decks
   for (i = 0; i < numPlayers; i++)
     {
@@ -641,9 +641,9 @@ int getCost(int cardNumber)
 
 }
 
-/* **************************** seperate card functions ******************************************* */
+/* **************************** seperate card functions *************************************************/
 
-	void _remodelCard() {
+	void remodelCard() {
       j = state->hand[currentPlayer][choice1];  //store card we will trash
 
       if ( (getCost(state->hand[currentPlayer][choice2]) + 2) > getCost(choice1) )
@@ -668,7 +668,7 @@ int getCost(int cardNumber)
       return 0;
     }
 
-	void _smithyCard() {
+	void smithyCard() {
       //+3 Cards
       for (i = 0; i < 4; i++)
 		{
@@ -679,7 +679,7 @@ int getCost(int cardNumber)
       return 0;
      }
 
-	void _adventurerCard() {
+	void adventurerCard() {
 	  while(drawntreasure<2)
       {
       	//if the deck is empty we need to shuffle discard and add to deck
@@ -708,7 +708,7 @@ int getCost(int cardNumber)
       return 0;
 	}
 
-	void _villageCard() {
+	void villageCard() {
       //+1 Card
       drawCard(currentPlayer, state);
 			
@@ -720,7 +720,7 @@ int getCost(int cardNumber)
       return 0;
 	}
 
-	void _sea_hagCard(){
+	void sea_hagCard(){
 	for (i = 0; i < state->numPlayers; i++){
 		if (i == currentPlayer){
 		  state->discard[i][state->discardCount[i]] = state->deck[i][state->deckCount[i]--];			    state->deckCount[i]--;
@@ -732,7 +732,7 @@ int getCost(int cardNumber)
     }
 
 
-/* **************************** card effect switch cases ******************************************* */
+/* **************************** card effect switch cases *************************************************/ 
 
 int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus)
 {
@@ -760,7 +760,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
     /*************/	
   /*  -->>  modifed */	
     case adventurer:
-    	_adventurerCard();
+    	adventurerCard();
       
 	/*************/		
     case council_room:
@@ -875,15 +875,15 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 
      /*************/	
     case remodel:
-      _remodelCard();
+      remodelCard();
       
      /*************/			
     case smithy:
-      _smithyCard();
+      smithyCard();
 
      /*************/	    
     case village:
-      _villageCard();
+      villageCard();
 
 	/*************/	
     case baron:
@@ -1216,7 +1216,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 	
 	/*************/	
     case sea_hag:  
-		_sea_hagCard();      
+		sea_hagCard();      
 	
 	/*************/	
     case treasure_map:
