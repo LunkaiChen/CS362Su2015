@@ -7,14 +7,14 @@
  * Overview: 
  * 	Provides documentation for the implementation of smithy and adventurer
  * 	cards, as well as discardCard() and updateCoins() methods in line
- * 	with the requirements of assignment 2.
+ * 	with the requirements of assignment 2. 
  *
  *****************************************************************************/
 
 
 
 /******************************************************************************
- * smithy card documentation
+ * smithy - card documentation
  * 
  * The smithy card is part of the CARD enumeration. When cardEffect() is called
  * a switch is performed on which card is being utilized.  In the case the card
@@ -27,7 +27,7 @@
 
 
 /******************************************************************************
- * adventurer card documentation
+ * adventurer - card documentation
  * 
  * The adventurer card is part of the CARD enumeration. When cardEffect() is 
  * called a switch is performed on which card is being utilized.  In the case
@@ -52,7 +52,7 @@
 
 
 /******************************************************************************
- * discardCard() documentation
+ * discardCard() - documentation
  * 
  * The discardCard method takes 4 parameters, an integer for hand position,
  * an integer to denote the current player, the gameState struct, and
@@ -75,7 +75,7 @@
 
 
 /******************************************************************************
- * updateCoins() documentation
+ * updateCoins() - documentation
  * 
  * The updateCoins method takes 3 parameters, an integer to denote the current 
  * player, the gameState struct, and an integer for any bonus amount to be 
