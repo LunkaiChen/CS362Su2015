@@ -3,7 +3,10 @@ Assignment 2
 06/25/2015
 
 *****************************************************************************************************************************
-Smithy – The smithy card is located in the switch statement used to select cards and perform actions. In dominion.h smithy is an enum of a CARD, all the cards are listed as an enumerated type.  When the smithy card is used a for loop is performed that runs drawCard(currentPlayerm, state) three times. The smithy card is then discarded from the player’s hand.
+Smithy – The smithy card is located in the switch statement used to select cards and perform actions. 
+In dominion.h smithy is an enum of a CARD, all the cards are listed as an enumerated type.  
+When the smithy card is used a for loop is performed that runs drawCard(currentPlayerm, state) three times. 
+The smithy card is then discarded from the player’s hand.
 
 *****************************************************************************************************************************
 Adventurer – The adventurer card is also located in the switch statement used to select cards and perform the action of the card. In dominion.h the adventurer is an enum of a CARD, the same as the Smithy card. When the Adventurer card is played, the code looks through your deck for the first treasure card. While this loop is processing it adds cards to your hand and removes them until a treasure card is found.
