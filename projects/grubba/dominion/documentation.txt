@@ -1,0 +1,57 @@
+Assignment 2 - Documentation
+Documentation for cards: Smithy, Adventurer
+Documentation for functions: discardCard(), updateCoins()
+-----------------------------------------------------------------------------------------
+
+Cards:
+
+Smithy
+	This calls the drawCard() function and passes arguments of currentPlayer
+	and state. We do not need to know the details of the drawCard() function
+	in order to understand what this code is doing; we can assume that it 
+	correctly draws a card for the player which corresponds to the currentPlayer
+	argument. This Smithy card calls drawCard() in a loop that runs 3 times, and
+	thus draws 3 cards for the player. 
+
+Adventurer
+	This card starts off with a while loop that continues to run while the variable
+	drawntreasure is less than 2. Within that while loop the code first checks for 
+	an empty deck and calls the function shuffle if the deck is empty. Then the code
+	calls a function to draw a card from the deck, and store that in the array that
+	represents the player's hand. The card that was just drawn is then checked with
+	a conditional statement to determine if it was a treasure card and, if it was, the
+	variable drawntreasure is incremented. Else, if it was not a treasure card, the 
+	card is stored in a temp hand for the player that will be discarded. After the 
+	while loop ends, another while loop is started that runs to discard all the cards
+	that were stored in the temp hand, that is all cards that were drawn but that were not
+	treasure cards from the previous while loop.
+------------------------------------------------------------------------------------------
+
+Functions:
+
+discardCard()
+	This functions receives arguments:
+		handPos - integer that represents the position of the player's hand
+		currentPlayer - integer representing a player (1, 2, 3, etc.)
+		state - struct that stores relevant variables for the state of the game
+		trashFlag - int to indicate whether a card should be removed or not
+	The function starts by checking if the trash flag is set. If it is not, 
+	the card is added to the array of played cards and the int that tracks the number
+	of played cards is incremented. The played card is then set to -1 in in the 
+	state struct, to indicate the card has been played. Then here is a series of if-else
+	statements to correctly remove the card from the players hand. The card is removed from
+	the player's hand in different ways corresponding to how many cards are left in the hand
+	of the player. Finally the function returns 0 to indicate successful execution/completion
+	of the function.
+
+updateCoins()
+	This functions receives arguments:
+		player - integer that represents which player (1, 2, 3, etc.)
+		state - struct that stores relevant variables for the state of the game
+		bonus - integer representing the value of the bonus to a player's coin count
+	This function initializes a loop driver i, an then resets the coin count which is contained
+	in the variable count within the state struct. The code then runs a loop that iterates an
+	equal number of times to the number of cards in the player's hand. The code then checks for
+	the 3 types of treasure cards (copper, silver, gold) and increases the coin count accordindly.
+	Finally the code adds the bonus to the coin count and then the function returns with a value
+	of 0 to indicate successful completion.
