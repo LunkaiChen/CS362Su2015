@@ -145,3 +145,19 @@ int villageEffect(int card, int choice1, int choice2, int choice3, struct gameSt
   discardCard(handPos, currentPlayer, state, 0);
   return 0;
 }
+
+int great_hallEffect(struct gameState *state, int handPos)
+{
+  int currentPlayer = whoseTurn(state);
+
+  //+1 Card
+  drawCard(currentPlayer, state);
+
+  //+1 Actions
+  state->numActions++;
+
+  //discard
+  discardCard(handPos, currentPlayer, state, 0);
+
+  return 0;
+}

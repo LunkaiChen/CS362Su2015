@@ -11,4 +11,6 @@ int smithyEffect(int card, int choice1, int choice2, int choice3, struct gameSta
 
 int villageEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus);
 
+int great_hallEffect(struct gameState *state, int handPos);
+
 #endif

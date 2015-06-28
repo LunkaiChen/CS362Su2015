@@ -14,3 +14,5 @@ bug: assignment to nextPlayer increments currentPlayer
 
 Refactored village into function villageEffect()
 addition for numActions is wrong
+
+Refactored great_hall into function great_hallEffect()
