@@ -22,3 +22,17 @@ Adventurer Card
 	stored in the temporary array 'temphand'. After drawing two treasure cards,
 	each card in the temporary hand is then discarded by directly modifying the
 	'discard' and 'discardCount' data members of the given game's state.
+
+discardCard() Method
+
+	The 'discardCard()' method receives 'handPos', an integer that identifies
+	the card to act upon in the given player's hand; 'currentPlayer', an
+	integer that identifies from which player to discard a card; 'state', a
+	reference to the game's state, and 'trashFlag', an integer that encodes
+	whether or not the discarded card is trashed. The only possible return
+	value is zero, which indicates success. As a post-condition, the game's
+	state is modified. Specifically, discarding a card modifies the 'hand',
+	'handPos', and 'handCount' game state data members to reflect one fewer
+	card in the player's hand. If the card is not trashed, the 'playedCards'
+	and 'playedCardCount' data members are also updated to represent moving the
+	discarded card from the player's hand to his/her deck of played cards.
