@@ -643,9 +643,9 @@ int getCost(int cardNumber)
   return -1;
 }
 
-int adventurerEffect(struct gameState *state,int cardDrawn, int drawntreasure)
+int adventurerEffect(struct gameState *state, int drawntreasure)
 {
-    int temphand[MAX_HAND],z=0,currentPlayer=1;                             ///////ERROR here, should have passed this array through function but declared here
+    int cardDrawn,temphand[MAX_HAND],z=0,currentPlayer=1;                             ///////ERROR here, should have passed this array through function but declared here
     while(drawntreasure<2){
         if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
           shuffle(currentPlayer, state);
@@ -695,11 +695,11 @@ int council_roomEffect(struct gameState *state, int currentPlayer,int handPos)
 
 }
 
-int feastEffect(struct gameState *state, int currentPlayer, int temphand[],int x,int choice1)
+int feastEffect(struct gameState *state, int currentPlayer, int temphand[],int choice1)
 {
     //gain card with cost up to 5
       //Backup hand
-      int i;
+      int i,x;
       for (i = 0; i <= state->handCount[currentPlayer]; i++){
 	temphand[i] = state->hand[currentPlayer][i];//Backup card
 	state->hand[currentPlayer][i] = -1;//Set to nothing
@@ -757,7 +757,7 @@ int smithyEffect(struct gameState *state, int currentPlayer, int handPos)
 {
     int i;
           //+3 Cards
-      for (i = 0; i < 2; i++)                           //////////error here it should have been 3 cards but it is 2
+      for (i = 0; i < 2; i++)                           //////////ERROR here it should have been 3 cards but it is 2
 	{
 	  drawCard(currentPlayer, state);
 	}
@@ -797,11 +797,9 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
   int i;
   int j;
   int k;
-  int x;
   int index;
-  int cardDrawn, drawntreasure=0;
+  int drawntreasure=0;
     int temphand[MAX_HAND];
-    //int z = 0;// this is the counter for the temp hand
   int currentPlayer = whoseTurn(state);
   int nextPlayer = currentPlayer + 1;
   int tributeRevealedCards[2] = {-1, -1};
@@ -814,13 +812,13 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
   switch( card )
     {
     case adventurer:
-        adventurerEffect(state, cardDrawn, drawntreasure);
+        adventurerEffect(state, drawntreasure);
         return 0;
     case council_room:
         council_roomEffect(state, currentPlayer, handPos);
         return 0;
     case feast:
-        feastEffect(state, currentPlayer, temphand, x,choice1);
+        feastEffect(state, currentPlayer, temphand,choice1);
         return 0;
     case gardens:
         return -1;
