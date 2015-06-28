@@ -1,0 +1,109 @@
+REFACTOR FILE - ASSIGNMENT 2
+
+Changes to the dominion.c file
+============
+The following changes were made to the cardEffect() method:
+
+ -The int variables drawntreasure, cardDrawn, and temphand were removed and added into the adventurerCard() method
+ -The Adventurer Card switch case was condensed into a single function call to the new adventurerCard() method.
+  The new method added to the file is listed below: 
+
+	void adventurerCard(struct gameState *state, int currentPlayer){
+	    int drawntreasure = 0;
+	    int cardDrawn;
+	    int temphand[MAX_HAND];
+	    int z = 0;
+	    while(drawntreasure<3){  //BUG: Up to three treasure cards are searched for instead of 2 
+ 			if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
+		  		shuffle(currentPlayer, state);
+			}
+			drawCard(currentPlayer, state);
+			cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card
+			if (cardDrawn == copper ||  cardDrawn == gold)  //BUG: We're only looking for copper and gold, silver is missing!
+		  		drawntreasure++;
+			else{
+		  		temphand[z]=cardDrawn;
+		  		state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one)
+		  		z++;
+			}
+	    }
+	    while(z-1>=0){
+			state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; //discard all cards in play that have been drawn
+			z=z-1;
+	    }
+	}
+  -The Smithy Card switch case was condensed into a single function call to the new smithyCard() method.
+   The new method added to the file is listed below:
+
+	void smithy(struct gameState *state, int currentPlayer, int handPos){
+	    //+3 Cards
+	    int i;
+	    for (i = 0; i < 4; i++)  //BUG: My smithy card is going to provide 4 cards, rather than 3
+		{
+		  drawCard(currentPlayer, state);
+		}
+				
+	    //discard card from hand
+	    discardCard(handPos, currentPlayer, state, 0);
+	}
+
+   -The Village Card switch case was condensed into a single function call to the new villageCard() method.
+    The new method added to the file is listed below:
+
+    void villageCard(struct gameState *state, int currentPlayer, int handPos){
+      //+1 Card
+      drawCard(currentPlayer, state);
+      
+      //+2 Actions
+      state->numActions = handPos + 2;  //BUG: My villageCard will will increment based on handPos instead of state->numActions
+      
+      //discard played card from hand
+      discardCard(handPos, currentPlayer, state, 0);
+	}
+
+    -The Outpost Card switch case was condensed into a single function call to the new outpostCard() method.
+    The new method added to the file is listed below:
+
+    void outpostCard(struct gameState *state, int currentPlayer, int handPos){
+      
+      //set outpost flag
+      //state->outpostPlayed++; BUG: Oops! Since this is commented, the outpostPlayed flag doesn't get set
+      
+      //discard card
+      discardCard(handPos, currentPlayer, state, 1); BUG: This discardCard call has the trash flag set...that could be bad!)
+	}
+
+	-The Steward Card switch case was condensed into a single function call to the new stewardCard() method.
+    The new method added to the file is listed below:
+
+	void stewardCard(int choice1, int choice2, int choice3, struct gameState *state, int currentPlayer, int handPos){
+      if (choice1 == 1)
+        {
+          //+2 cards
+          drawCard(currentPlayer, state);
+          drawCard(currentPlayer, state);
+        }
+      else if (choice1 == 2)
+        {
+          //+2 coins
+          state->coins = state->numActions + 2;  BUG: We're incrementing the coins member based on the numActions member!
+        }
+      else
+        {
+          //trash 2 cards in hand
+          discardCard(choice2, currentPlayer, state, 0); BUG(s): We're trying to trash these cards, but trash flags arent set
+          discardCard(choice3, currentPlayer, state, 0);
+        }
+      
+        //discard card from hand
+      discardCard(handPos, currentPlayer, state, 0);
+	
+	}
+Changes to the dominion_helpers.h file
+============
+The following forward declarations were added:
+	void adventurerCard(struct gameState *state, int currentPlayer);
+	void smithyCard(struct gameState *state, int currentPlayer, int handPos);
+	void villageCard(struct gameState *state, int currentPlayer, int handPos);
+	void outpostCard(struct gameState *state, int currentPlayer, int handPos);
+	void stewardCard(int choice1, int choice2, int choice3, struct gameState *state, int currentPlayer, int handPos);
