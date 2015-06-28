@@ -50,7 +50,8 @@ player: player.c interface.o
 
 oldAll: playdom player testDrawCard testBuyCard badTestDrawCard unittest1 unittest2 unittest3 unittest4
 
-all: playdom player unittest1 unittest2 unittest3 unittest4 cardtest1
+#all: playdom player unittest1 unittest2 unittest3 unittest4 cardtest1
 
+all: playdom player 
 clean:
 	rm -f *.o playdom.exe playdom test.exe test player player.exe testInit testInit.exe *.gcov *.gcda *.gcno *.so
