@@ -131,4 +131,7 @@ int getWinners(int players[MAX_PLAYERS], struct gameState *state);
 void adventurerCard(int currentPlayer, struct gameState *state);
 /* function that deals with the adventurer action card */
 
+void smithyCard(int currentPlayer, struct gameState *state, int handPos);
+/* function that deals with smithy action card */
+
 #endif
