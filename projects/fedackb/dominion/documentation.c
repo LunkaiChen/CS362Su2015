@@ -36,3 +36,14 @@ discardCard() Method
 	card in the player's hand. If the card is not trashed, the 'playedCards'
 	and 'playedCardCount' data members are also updated to represent moving the
 	discarded card from the player's hand to his/her deck of played cards.
+
+updateCoins() Method
+
+	The 'updateCoins()' method receives 'player', an integer that identifies
+	the affected player; 'state', a reference to the game's state; and 'bonus',
+	an integer representing bonus currency. The only possible return value is
+	zero, which indicates success. As a post-condition, the game's state is
+	modified. The routine iterates over the cards in the given player's hand
+	and accumulates the total amount of treasures. Bonus coins are added to
+	this amount, and the final total is stored in the 'coins' game state data
+	member.
