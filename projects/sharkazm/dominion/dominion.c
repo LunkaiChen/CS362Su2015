@@ -737,6 +737,10 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
   switch( card ) 
     {
     	
+    case smithy:
+      smithyCard(state, currentPlayer, handPos);
+      return 0;	
+      
     case adventurer:
       adventurerCard(state, currentPlayer);
       return 0;
@@ -883,21 +887,6 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 	    }
 	}
 
-      return 0;
-	
-    case smithy:
-      smithyCard(state, currentPlayer, handPos);
-      return 0;	
-      
-    case village:
-      //+1 Card
-      drawCard(currentPlayer, state);
-			
-      //+2 Actions
-      state->numActions = state->numActions + 2;
-			
-      //discard played card from hand
-      discardCard(handPos, currentPlayer, state, 0);
       return 0;
 		
     case baron:
