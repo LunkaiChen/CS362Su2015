@@ -38,7 +38,7 @@ The following changes were made to the cardEffect() method:
 	void smithy(struct gameState *state, int currentPlayer, int handPos){
 	    //+3 Cards
 	    int i;
-	    for (i = 0; i < 3; i++)
+	    for (i = 0; i < 4; i++)  //BUG: My smithy card is going to provide 4 cards, rather than 3
 		{
 		  drawCard(currentPlayer, state);
 		}
@@ -55,7 +55,7 @@ The following changes were made to the cardEffect() method:
       drawCard(currentPlayer, state);
       
       //+2 Actions
-      state->numActions = state->numActions + 2;
+      state->numActions = handPos + 2;  //BUG: My villageCard will will increment based on handPos instead of state->numActions
       
       //discard played card from hand
       discardCard(handPos, currentPlayer, state, 0);
@@ -67,10 +67,10 @@ The following changes were made to the cardEffect() method:
     void outpostCard(struct gameState *state, int currentPlayer, int handPos){
       
       //set outpost flag
-      state->outpostPlayed++;
+      //state->outpostPlayed++; BUG: Oops! Since this is commented, the outpostPlayed flag doesn't get set
       
       //discard card
-      discardCard(handPos, currentPlayer, state, 0);
+      discardCard(handPos, currentPlayer, state, 1); BUG: This discardCard call has the trash flag set...that could be bad!)
 	}
 
 	-The Steward Card switch case was condensed into a single function call to the new stewardCard() method.
@@ -86,13 +86,13 @@ The following changes were made to the cardEffect() method:
       else if (choice1 == 2)
         {
           //+2 coins
-          state->coins = state->coins + 2;
+          state->coins = state->numActions + 2;  BUG: We're incrementing the coins member based on the numActions member!
         }
       else
         {
           //trash 2 cards in hand
-          discardCard(choice2, currentPlayer, state, 1);
-          discardCard(choice3, currentPlayer, state, 1);
+          discardCard(choice2, currentPlayer, state, 0); BUG(s): We're trying to trash these cards, but trash flags arent set
+          discardCard(choice3, currentPlayer, state, 0);
         }
       
         //discard card from hand
