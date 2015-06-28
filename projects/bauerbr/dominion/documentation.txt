@@ -1,15 +1,25 @@
-Smithy – The smithy card is located in the switch statement used to select cards and perform actions. In dominion.h smithy is an enum of a CARD, all the cards are listed as an enumerated type.  When the smithy card is used a for loop is performed that runs drawCard(currentPlayerm, state) three times. The smithy card is then discarded from the player’s hand.
-Adventurer – The adventurer card is also located in the switch statement used to select cards and perform the action of the card. In dominion.h the adventurer is an enum of a CARD, the same as the Smithy card. When the Adventurer card is played, the code looks through your deck for the first treasure card. While this loop is processing it adds cards to your hand and removes them until a treasure card is found.
-discardCard() – int discardCard()  takes in four parameters. These four parameters are:
+Bryan Bauer
+Assignment 2
+06/25/2015
+
+*****************************************************************************************************************************
+Smithy â€“ The smithy card is located in the switch statement used to select cards and perform actions. In dominion.h smithy is an enum of a CARD, all the cards are listed as an enumerated type.  When the smithy card is used a for loop is performed that runs drawCard(currentPlayerm, state) three times. The smithy card is then discarded from the playerâ€™s hand.
+
+*****************************************************************************************************************************
+Adventurer â€“ The adventurer card is also located in the switch statement used to select cards and perform the action of the card. In dominion.h the adventurer is an enum of a CARD, the same as the Smithy card. When the Adventurer card is played, the code looks through your deck for the first treasure card. While this loop is processing it adds cards to your hand and removes them until a treasure card is found.
+
+*****************************************************************************************************************************
+discardCard() â€“ int discardCard()  takes in four parameters. These four parameters are:
 * Handpos is the index of where the card is located. In this case if wanted to discard the card at index 3 our handpos would be 3.
 * CurrentPlayer is the index of the player that is discarding the card
 * GameState * state is a structure that contains the state of where the game is at either the action phase, buy phase, or clean-up phase.
 * trashFlag  determines whether the card to be discarded should go into the already played pile or the real discard pile.
-Before this function is executed the card that the player wants to discard is located somewhere in their hand. When the function is executed it begins by checking the trash flag. If the trash flag is less than 1 it adds the card to the played pile.  The function than sets the played card to -1 and removes the card from the player’s hands. If the last card in hand is played or there is only one card in the plyers hand then the number of cards in hand is reduced. If none of those cases are met than the function replaces the discarded card with the last card in the hand and then reduces the number of cards in the hand.
+Before this function is executed the card that the player wants to discard is located somewhere in their hand. When the function is executed it begins by checking the trash flag. If the trash flag is less than 1 it adds the card to the played pile.  The function than sets the played card to -1 and removes the card from the playerâ€™s hands. If the last card in hand is played or there is only one card in the plyers hand then the number of cards in hand is reduced. If none of those cases are met than the function replaces the discarded card with the last card in the hand and then reduces the number of cards in the hand.
 
-UpdateCoins() – int updateCoins() takes in three parameters. These three parameters are:
-Int player – This is the current player (same as CurrentPlayer)
+*****************************************************************************************************************************
+UpdateCoins() â€“ int updateCoins() takes in three parameters. These three parameters are:
+Int player â€“ This is the current player (same as CurrentPlayer)
 GameState * state is a structure which represents the current state of the game.
 Int bonus: This is the amount of coins the player has received from action cards.
-This function resets the players coin count, and then adds coins for each treasure card in the player’s hand.  Once the function has completed those tasks the bonuses are added.
+This function resets the players coin count, and then adds coins for each treasure card in the playerâ€™s hand.  Once the function has completed those tasks the bonuses are added.
 
