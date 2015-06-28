@@ -1,2 +1,5 @@
-bug1: This is my bug1.
-bug2: This is my bug2. 
+Note: Bug information included in refactor.txt
+
+bug1: 
+
+bug2: 

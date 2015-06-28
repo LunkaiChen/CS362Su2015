@@ -1,0 +1,53 @@
+------------------------------------------------------------------------------------------------------
+Changes in dominion.c
+------------------------------------------------------------------------------------------------------
+
+--added Definition for function void smithy_(int handPos, struct gameState *state)
+	
+
+--added Definition for function void adventurer_(struct gameState *state)
+
+--added Definition for function void village_(int handPos, struct gameState *state)
+
+--added Defintion for function void council_room_(int handPos, struct gameState *state)
+
+--added Definition for function void outpost_(struct gameState *state)
+
+
+
+Changes in cardEffect(): ***************************************
+ 
+-- removed variable 'z'
+-- removed variable 'cardDrawn'
+-- removed variable 'drawntreasure'
+
+-- case smithy: now uses a wrapper function called void smithy_. 2 paramters (int handPos, struct gameState* state);
+	  bug: does not discard after use
+
+-- case adventurer: now uses a wrapper function called void adventurer_. Takes 1 parameter (struct gameState* state);
+	bug: does not shuffle deck when deck is empty. 
+
+-- case village: now uses a wrapper function called void village_. Takes 2 parameters (int handPos, struct gameState* state);
+	no known bug introduced
+
+-- case council_room: now uses a wrapper function called void council_room_.  Takes 2 paramters (int handPos, struct gameState *state);
+	bug: does not draw 4 more cards but instead only draws 1
+
+-- case outpost: now uses a wrapper function called void outpost).  Takes 1 parameter (struct gameState *state);
+	bug: Does not discard after use
+
+             ******************************************************
+
+------------------------------------------------------------------------------------------------------
+Changes in dominion.h
+------------------------------------------------------------------------------------------------------
+
+--Added prototype function for void smithy_();
+
+--Added prototype function for void adventurer_();
+
+--Added prototype function for void village_();
+
+--Added prototype function for void council_room_();
+
+--Added prototype function for void outpost_()

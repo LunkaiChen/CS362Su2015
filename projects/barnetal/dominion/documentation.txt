@@ -1,0 +1,18 @@
+Smithy:
+	
+	If the card played (read through the playCard() function) is the "smithy" card, 3 cards are added to the player's had via the drawCard() function. The smithy card is then discarded from the player's hand via the discardCard() function.  
+
+
+Adventurer:
+	
+	If the card played (read through the playCard() function) is the "adventurer" card, player draws cards from the top of their deck until they get 2 treasure cards. If the deck is empty at any point during this, the discard pile is shuffled and becomes the deck to be drawn from. Once 2 treasure cards are drawn, the other cards  that were drawn are put into the discard pile. 
+
+
+discardCard():
+	
+	This function removes the played card from the hand of the player. In lower level terms, if the card played was stored as the last element in the hand array, the hand count is simply decremented.  if the card played is the only card in the player's hand (hand count == 1), the hand count is again simply decremented.  If the card played was in any other position in the array, the element holding the played card is replaced with the last element in the array. The count is then decremented. 
+
+
+updateCoins():
+	
+	This function counts how many coins a player has in their hand. The count is as follows: a copper is worth 1, a silver 2, and a gold card is worth 3 coins. Any bonuses that the player also has in their hand are added to this total.  
