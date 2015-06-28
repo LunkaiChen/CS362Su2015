@@ -1,0 +1,20 @@
+Assignment 2 - Refactoring Cards
+Cards refactored: Smithy, Adventurer, 
+Bugs introduced: playSmithy(), Adventurer, 
+-----------------------------------------------------------------------------------------
+
+Cards Refactored:
+
+Smithy
+	This code implementing this card was refactored into it's own function, playSmithy().
+	This function takes all necessary arguments for implementing the smithy card, that is
+	arguments for currentPlayer, handPos and state. T 
+-----------------------------------------------------------------------------------------
+
+Bugs Introduced:
+
+playSmithy()
+	This code for the Smithy card has a subtle bug where an extra, fourth, card is drawn
+	to the player's hand. This is a result of the loop not stopping when it should and 
+	running a single extra time.
+

@@ -681,7 +681,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 	  z++;
 	}
       }
-      
+
       while(z-1>=0){
 	state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
 	z=z-1;
@@ -830,14 +830,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 		
     case smithy:
-      //+3 Cards
-      for (i = 0; i < 3; i++)
-	{
-	  drawCard(currentPlayer, state);
-	}
-			
-      //discard card from hand
-      discardCard(handPos, currentPlayer, state, 0);
+      playSmithy(currentPlayer, handPos, state);
       return 0;
 		
     case village:
@@ -1329,6 +1322,18 @@ int updateCoins(int player, struct gameState *state, int bonus)
   return 0;
 }
 
+int playSmithy(int currentPlayer, int handPos, struct gameState *state) {
+  int i = 0;
 
+  //draw 3 cards for the player
+  for(i = 0; i <= 3; i++) {
+    drawCard(currentPlayer, state);
+  }
+
+  //discard a card from hand
+  discardCard(handPos, currentPlayer, state, 0);
+
+  return 0;
+}
 //end of dominion.c
 
