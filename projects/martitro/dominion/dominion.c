@@ -1201,7 +1201,7 @@ void playAdventurer(int currentPlayer, int *temphand, struct gameState *state) {
             z++;
         }
     }
-    while(z-1>=0) {
+    while(z-1>0) {
         state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
         z=z-1;
     }
@@ -1302,8 +1302,6 @@ void playMine(int currentPlayer, int choice1, int choice2, int handPos, struct g
 	  return;
 	}
 
-      gainCard(choice2, state, 2, currentPlayer);
-
       //discard card from hand
       discardCard(handPos, currentPlayer, state, 0);
 
@@ -1338,7 +1336,7 @@ void playRemodel(int currentPlayer, int choice1, int choice2, int handPos, struc
 	{
 	  if (state->hand[currentPlayer][i] == j)
 	    {
-	      discardCard(i, currentPlayer, state, 0);
+	      discardCard(i, currentPlayer, state, 1);
 	      break;
 	    }
 	}
@@ -1347,7 +1345,7 @@ void playRemodel(int currentPlayer, int choice1, int choice2, int handPos, struc
 
 void playSmithy(int currentPlayer, int handPos, struct gameState *state) {
     int i;
-      for (i = 0; i < 3; i++)
+      for (i = 1; i < 3; i++)
 	{
 	  drawCard(currentPlayer, state);
 	}
