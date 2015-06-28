@@ -132,4 +132,8 @@ int playSmithy(int currentPlayer, int handPos, struct gameState *state);
 /* Draw three cards for the current player as an effect of the card
     smithy being played. */
 
+int playAdventurer(int currentPlayer, int drawntreasure, struct gameState *state, int z, int *temphand);
+/* Implements playing the Adventurer card which draws cards until 2 treasure cards are drawn and then
+    discards all other cards that were drawn that were not treasure cards. */
+
 #endif
