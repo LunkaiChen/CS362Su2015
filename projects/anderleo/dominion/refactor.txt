@@ -13,13 +13,13 @@ The following changes were made to the cardEffect() method:
 	    int cardDrawn;
 	    int temphand[MAX_HAND];
 	    int z = 0;
-	    while(drawntreasure<2){
-			if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
+	    while(drawntreasure<3){  //BUG: Up to three treasure cards are searched for instead of 2 
+ 			if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
 		  		shuffle(currentPlayer, state);
 			}
 			drawCard(currentPlayer, state);
 			cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card
-			if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
+			if (cardDrawn == copper ||  cardDrawn == gold)  //BUG: We're only looking for copper and gold, silver is missing!
 		  		drawntreasure++;
 			else{
 		  		temphand[z]=cardDrawn;
