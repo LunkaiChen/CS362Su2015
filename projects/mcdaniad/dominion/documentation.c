@@ -20,7 +20,6 @@ exiting the while loop), loops through the temphand array from 0 to z-1, discard
 -----
 
 discardCard()
-
 Implementation: Receives 4 arguments: handPos (which # card in the hand is being discarded?), currentPlayer 
 which player is discarding?), state (contains information about number of players and cards available in the
 deck) and trashFlag (determines whether card is Trashed or Played). When called, adds the card to the
@@ -30,7 +29,6 @@ not the last card in the hand, replaces with the last card in the player's hand.
 -----
 
 updateCoins()
-
 Implementation: Receives 3 arguments: player (for which player are we updating coins?), state (contains
 information about number of players and cards available in the deck), and bonus (does the palyer receive a
 coin bonus?). Resets coin count, then adds coins for each Treasure card in the player's hand. Then, adds
