@@ -653,7 +653,7 @@ void adventurerCard(struct gameState *state, int currentPlayer, int cardDrawn, i
      int drawntreasure=0;
      int z=0;// this is the counter for the temp hand
      while(drawntreasure<2){
-        if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
+        if (state->handCount[currentPlayer] <1){//if the hand is empty we need to shuffle discard and add to deck
           shuffle(currentPlayer, state);
         }
         drawCard(currentPlayer, state);
@@ -675,7 +675,7 @@ void adventurerCard(struct gameState *state, int currentPlayer, int cardDrawn, i
 //refactor: Implement smithy card method here
 void smithyCard(int handPos, int currentPlayer, struct gameState *state, int trashFlag){
    int i;
-   for (i = 0; i < 3; i++)
+   for (i = 1; i < 3; i++)
    {
       drawCard(currentPlayer, state);
    }
@@ -698,27 +698,37 @@ void councilRoomCard(int handPos, int currentPlayer, struct gameState *state, in
       //Each other player draws a card
       for (i = 0; i < state->numPlayers; i++)
 	{
-	  if ( i != currentPlayer )
-	    {
 	      drawCard(i, state);
-	    }
 	}
 			
       //put played card in played card pile
       discardCard(handPos, currentPlayer, state, 0);
 }
 
-//refactor: Implement common card method here for village and great_hall case 
-void commonCard(int handPos, int currentPlayer, struct gameState *state, int trashFlag, int action){
+//refactor: Implement village card method here
+void villageCard(int handPos, int currentPlayer, struct gameState *state, int trashFlag){
       //+1 Card
       drawCard(currentPlayer, state);
 
       //+ Actions
-      state->numActions = state->numActions + action;
+      state->numActions = state->numActions++;
 
       //discard played card from hand
       discardCard(handPos, currentPlayer, state, 0);
 }
+
+//refactor: Implement great_hall card method here
+void greatHallCard(int handPos, int currentPlayer, struct gameState *state, int trashFlag){
+      //+1 Card
+      drawCard(currentPlayer, state);
+
+      //+ Actions
+      state->numActions = state->numActions++;
+
+      //discard played card from hand
+      discardCard(handPos, currentPlayer, state, 0);
+}
+
 
 int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus)
 {
@@ -873,8 +883,8 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 		
     case village:
-      //Refactor: Call common card method here
-      commonCard(handPos, currentPlayer, state, 0, 2);
+      //Refactor: Call village card method here
+      villageCard(handPos, currentPlayer, state, 0);
       return 0;
 		
     case baron:
@@ -929,8 +939,8 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 		
     case great_hall:
-      //Refactor: call common card here
-      commonCard(handPos, currentPlayer, state, 0, 1);
+      //Refactor: call great hall card here
+      greatHallCard(handPos, currentPlayer, state, 0);
       return 0;
 		
     case minion:
