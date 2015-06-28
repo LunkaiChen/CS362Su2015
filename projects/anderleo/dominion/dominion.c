@@ -1171,13 +1171,13 @@ void adventurerCard(struct gameState *state, int currentPlayer){
     int cardDrawn;
     int temphand[MAX_HAND];
     int z = 0;
-    while(drawntreasure<2){
+    while(drawntreasure<3){
     if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
         shuffle(currentPlayer, state);
     }
     drawCard(currentPlayer, state);
     cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card
-    if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
+    if (cardDrawn == copper || cardDrawn == gold)
         drawntreasure++;
     else{
         temphand[z]=cardDrawn;
