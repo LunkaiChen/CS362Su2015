@@ -659,7 +659,7 @@ void adventurerCard(int currentPlayer, struct gameState *state){
 		}
 		drawCard(currentPlayer, state);
 		cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
-		if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
+		if (cardDrawn == copper)
 			drawntreasure++;
 		else{
 			temphand[z]=cardDrawn;
@@ -678,11 +678,8 @@ void smithyCard(int currentPlayer, struct gameState *state, int handPos){
     //+3 Cards
     for (i = 0; i < 3; i++)
 	{
-	  drawCard(currentPlayer, state);
+		drawCard(currentPlayer, state);
 	}
-			
-    //discard card from hand
-    discardCard(handPos, currentPlayer, state, 0);
 }
 
 void council_roomCard(int currentPlayer, struct gameState *state, int handPos){
@@ -692,9 +689,6 @@ void council_roomCard(int currentPlayer, struct gameState *state, int handPos){
 	{
 	  drawCard(currentPlayer, state);
 	}
-	
-	//+1 Buy
-    state->numBuys++;
 			
     //Each other player draws a card
     for (i = 0; i < state->numPlayers; i++)
@@ -736,6 +730,7 @@ void feastCard(int currentPlayer, struct gameState *state, int handPos, int choi
 			if (DEBUG){
 				printf("Coins: %d < %d\n", state->coins, getCost(choice1));
 			}
+			x = 0;
 		}
 		else{
 			if (DEBUG){
