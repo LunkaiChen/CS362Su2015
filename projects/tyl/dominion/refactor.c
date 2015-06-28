@@ -7,3 +7,6 @@ refactor.txt
 
 //Added void smithyCard(int currentPlayer, struct gameState *state, int handPos) function definition in dominion.c
 //Added void smithyCard(int currentPlayer, struct gameState *state, int handPos) function declaration in dominion.h
+
+//Added void council_roomCard(currentPlayer, state, handPos) function definition in dominion.c
+//Added void council_roomCard(currentPlayer, state, handPos) function declaration in dominion.h
