@@ -134,7 +134,10 @@ void adventurerCard(int currentPlayer, struct gameState *state);
 void smithyCard(int currentPlayer, struct gameState *state, int handPos);
 /* function that deals with smithy action card */
 
-void council_roomCard(currentPlayer, state, handPos);
+void council_roomCard(int currentPlayer, struct gameState *state, int handPos);
 /* function that deals with council_room action card */
+
+void feastCard(int currentPlayer, struct gameState *state, int handPos, int choice1)
+/* function that deals with feast action card */
 
 #endif
