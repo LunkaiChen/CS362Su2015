@@ -1,3 +1,5 @@
+DOCUMENTATION FILE - ASSIGNMENT 2
+
 Smithy Card
 ===========
 When the smithy card case is triggered, the program immediately encounters a for loop that calls the drawCard
