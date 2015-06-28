@@ -13,3 +13,6 @@ refactor.txt
 
 //Added void feastCard(int currentPlayer, struct gameState *state, int handPos, int choice1) function definition in dominion.c
 //Added void feastCard(int currentPlayer, struct gameState *state, int handPos, int choice1) function declaration in dominion.h
+
+//Added int mineCard(int currentPlayer, struct gameState *state, int handPos, int choice1, int choice2) function definition in dominion.c
+//Added int mineCard(int currentPlayer, struct gameState *state, int handPos, int choice1, int choice2) function declaration in dominion.h
