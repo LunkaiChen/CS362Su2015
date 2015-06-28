@@ -5,6 +5,8 @@
 #include <math.h>
 #include <stdlib.h>
 
+int smithyCardEffect(int handPos, struct gameState *state);
+
 int compare(const void* a, const void* b) {
   if (*(int*)a > *(int*)b)
     return 1;
@@ -829,15 +831,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 		
     case smithy:
-      //+3 Cards
-      for (i = 0; i < 3; i++)
-	{
-	  drawCard(currentPlayer, state);
-	}
-			
-      //discard card from hand
-      discardCard(handPos, currentPlayer, state, 0);
-      return 0;
+		return smithyCardEffect(handPos, state);
 		
     case village:
       //+1 Card
@@ -1328,6 +1322,21 @@ int updateCoins(int player, struct gameState *state, int bonus)
   return 0;
 }
 
+int smithyCardEffect(int handPos, struct gameState *state)
+{
+	int i;
+	int currentPlayer = whoseTurn(state);
+
+	//+3 Cards
+	for (i = 0; i < 3; i++)
+	{
+		drawCard(currentPlayer, state);
+	}
+
+	//discard card from hand
+	discardCard(handPos, currentPlayer, state, 0);
+	return 0;
+}
 
 //end of dominion.c
 
