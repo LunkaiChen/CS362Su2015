@@ -742,7 +742,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
       
     case village:
-      village_played(state, currentPlayer, handPos);
+      villageCard(state, currentPlayer, handPos);
       return 0;
       
     case council_room:
@@ -886,7 +886,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 	
     case smithy:
-      smithy_played(state, currentPlayer, handPos);
+      smithyCard(state, currentPlayer, handPos);
       return 0;	
       
     case village:
