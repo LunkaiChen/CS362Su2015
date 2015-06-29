@@ -1,0 +1,23 @@
+/******************************************************************************
+ * Author:		Rich Gagliano
+ * Date Created:	06/28/2015
+ * Date Modified:	06/28/2015
+ * File Name:		refactor.c
+ * 
+ * Overview:
+ * 	Details the changes to dominion.c and dominion.h to satisfy the
+ * 	requirements for requirement 3 of assignment2.
+ * 
+ *****************************************************************************/
+
+
+/******************************************************************************
+ * smithy - refactor
+ * 
+ * Refactored the smithy card by adding a prototype to dominion.h for a new 
+ * function smithyCardEffect().  To start with smithyCardEffect() contained
+ * the exact code originally found in cardEffect(). The cardEffect() function
+ * was modified to return the results of smithyCardEffect() rather than
+ * performing the card effects within the switch.
+ * 
+ *****************************************************************************/
