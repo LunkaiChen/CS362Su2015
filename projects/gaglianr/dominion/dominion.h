@@ -140,4 +140,7 @@ int councilroomCardEffect(int currentPlayer, struct gameState *state, int handPo
 int minionCardEffect(int currentPlayer, struct gameState *state, int handPos, int choice1, int choice2);
 /* Refactored code to handle Minion card effect in separate method */
 
+int stewardCardEffect(int currentPlayer, struct gameState *state, int handPos, int choice1, int choice2, int choice3);
+/* Refactored code to handle Steward card effect in separate method */
+
 #endif

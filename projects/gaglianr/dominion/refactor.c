@@ -54,3 +54,14 @@
  * than performing the card effects within the switch.
  * 
  *****************************************************************************/
+
+/******************************************************************************
+ * steward - refactor
+ * 
+ * Refactored the steward card by adding a prototype to dominion.h for a new 
+ * function stewardCardEffect().  To start with stewardCardEffect() 
+ * contained the exact code originally found in cardEffect(). The cardEffect() 
+ * function was modified to return the results of stewardCardEffect() rather 
+ * than performing the card effects within the switch.
+ * 
+ *****************************************************************************/
