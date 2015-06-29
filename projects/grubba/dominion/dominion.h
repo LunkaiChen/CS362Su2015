@@ -128,4 +128,24 @@ int getWinners(int players[MAX_PLAYERS], struct gameState *state);
 /* Set array position of each player who won (remember ties!) to
    1, others to 0 */
 
+int playSmithy(int currentPlayer, int handPos, struct gameState *state);
+/* Draw three cards for the current player as an effect of the card
+    smithy being played. */
+
+int playAdventurer(int currentPlayer, int drawntreasure, struct gameState *state, int z, int *temphand);
+/* Implements playing the Adventurer card which draws cards until 2 treasure cards are drawn and then
+    discards all other cards that were drawn that were not treasure cards. */
+
+int playVillage(int currentPlayer, int handPos, struct gameState *state);
+/* Implements playing the Village card which draws a card and gives the player 2 extra actions to
+    take. */
+
+int playCutpurse(int currentPlayer, int handPos, struct gameState *state);
+/* Implements the Cutpurse card which forces each other player to discard a copper card or reveals
+    their hand if there are no copper cards present in it. */
+
+int playMine(int currentPlayer, int handPos, struct gameState *state, int choice1, int choice2);
+/* Implements the Mine card which discards/trashes a treasure card from player hand and allows
+    that player to gain a treasure card costing 3 or more coins into their hand. */
+
 #endif
