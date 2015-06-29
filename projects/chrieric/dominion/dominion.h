@@ -128,4 +128,38 @@ int getWinners(int players[MAX_PLAYERS], struct gameState *state);
 /* Set array position of each player who won (remember ties!) to
    1, others to 0 */
 
+int adventurerNew(int *temphand, int currPlayer, struct gameState *state);
+/*Input: temphand array, handposition, current player, state
+Output: integer value
+Overview: current player draws cards until they have found two treasure cards
+the treasure cards are then added to their hand while the rest of the cards
+are added to the "played" pile
+*/
+
+int smithyNew(int handPos, int currPlayer, struct gameState *state);
+/*Input: handposition, current player, state
+Output: integer value
+Overview: current player draws 3 cards and discards the played smithy card
+*/
+
+int villageNew(int handPos, int currPlayer, struct gameState *state);
+/*Input: handposition, current player, state
+Output: integer value
+Overview: current player draws a card and sets the state's numActions property to it's current value + 2
+*/
+
+int greatHallNew(int handPos, int currPlayer, struct gameState *state);
+/*Input: handposition, current player, state
+Output: integer value
+Overview: current player draws one card and increases current actions by 1
+*/
+
+int councilRoomNew(int handPos, int currPlayer, struct gameState *state);
+/*Input: handposition, current player, state
+Output: integer value
+Overview: draws 4 cards for current player, increments current buys available by 1
+also draws one card for each other player
+*/
+
+
 #endif
