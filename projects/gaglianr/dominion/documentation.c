@@ -21,7 +21,7 @@
  * is equal to the 'smithy' in the CARD enumeration, the drawCard() method is
  * called 3 times for the current player to execute the '+3 Cards' action. Then,
  * discardCard() is called to discard the smithy card from the players hand,
- * and 0 is returned to signify no errors were encountered.
+ * and 0 since this is not a curse.
  * 
  *****************************************************************************/
 
@@ -45,8 +45,8 @@
  * continues until the temporary hand is empty. Inside this loop, the temporary
  * cards are discarded one at a time.
  * 
- * Once this loop is finished, 0 is returned to signify no errors were
- * encountered.
+ * Once this loop is finished, 0 is returned to signify that this is not a 
+ * curse.
  * 
  *****************************************************************************/
 
@@ -69,7 +69,7 @@
  * player's handcount by 1, or moving the played card to the last card in 
  * hand and reducing the hand count by 1.
  * 
- * Once this is completed, 0 is returned to signify no errors occured.
+ * Once this is completed, 0 is returned to signify that this is not a curse.
  * 
  *****************************************************************************/
 
@@ -86,6 +86,6 @@
  * silver, and 3 for gold cards.
  * 
  * Once completed, the provided bonus is added to the game state's coins, and
- * 0 is returned to signify no errors occured.
+ * 0 is returned to signify that this is not a curse.
  * 
  *****************************************************************************/
