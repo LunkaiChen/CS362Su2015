@@ -1,0 +1,23 @@
+
+--------------- adventure --------------- 
+Original code is implemented into a function called adventureCard(struct gameState *state, currentPlayer);
+Bugs added: For this one I just initialized the temphand counter (z) to 1 so that only 1 treasure card will be drawn.
+
+--------------- counsil_room --------------- :
+Code is implemented into a function called council_room_card(struct gameState *state, handpos).
+Bugs: Changed state->numPlayers to state->numActions. 
+
+--------------- smithy --------------- 
+Code is implemented into a function called smithyCard(struct gameState *state, handpos).
+Bugs: 6 cards drawn instead of 3.
+ 
+--------------- villageCard --------------- 
+Code is implemented into a funciton called village(struct gameState *state, handpos).
+Bugs: Fails to discard the played card.
+
+---------------great_hall --------------- 
+Code is implemented into a funciton called great_hallCard(struct gameState *state, handpos).
+Bugs: Instead of drawing a card into the current player, a card is drawn into player "1."
+
+
+
