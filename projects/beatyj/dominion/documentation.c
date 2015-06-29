@@ -1,13 +1,13 @@
 /***************************************************\
-| Jonathan Beaty								    |
-| beatyj@onid.oregonstate.edu 						|
-| CS362 Summer 2015								    |
-| Assignment # 2 									|
-| documentation.c 									|
-| 													|
-| This file explains the adventurer and				|
-| smithy cards in dominion as well as the code		| 
-| and methods used for each respectively			|
+| Jonathan Beaty								    
+| beatyj@onid.oregonstate.edu 						
+| CS362 Summer 2015								    
+| Assignment # 2 									
+| documentation.c 									
+| 													
+| This file explains the adventurer and				
+| smithy cards in dominion as well as the code		 
+| and methods used for each respectively			
 \***************************************************/
 
 /****************/

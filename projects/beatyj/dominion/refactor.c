@@ -1,12 +1,12 @@
 /***************************************************\
-| Jonathan Beaty								    |
-| beatyj@onid.oregonstate.edu 						|
-| CS362 Summer 2015								    |
-| Assignment # 2 									|
-| refactor.c								   	    |
-| 													|
-| This file tells which cards have been refactored	|
-| and what bugs have been introduced				|
+| Jonathan Beaty								    
+| beatyj@onid.oregonstate.edu 						
+| CS362 Summer 2015								    
+| Assignment # 2 									
+| refactor.c								   	    
+| 													
+| This file tells which cards have been refactored	
+| and what bugs have been introduced				
 \***************************************************/
 
 All bugs are made inside the ref methods. Methods get called in cardEffect() for each case.
