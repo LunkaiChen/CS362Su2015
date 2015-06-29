@@ -31,6 +31,12 @@ Cutpurse
 	only significant changes in source code was removing declaration/initialization of
 	loop drivers to be local to the function playCutpurse and removing the declaration of
 	the loop driver k from cardEffect (since it was no longer being used).
+
+Mine
+	This code was moved into its own function, playMine. This function is called in the
+	switch statement for playing the Mine card within the cardEffect function. The only
+	significant change in source code to this card's implementation was to declare some 
+	loop drivers i and j locally within the function playMine().
 -----------------------------------------------------------------------------------------
 
 Bugs Introduced:
@@ -51,3 +57,7 @@ playVillage()
 playCutpurse()
 	The bug introduced here is that other player's hands are revealed even if there are
 	copper coins in those player's hands that have been discarded.
+
+playMine()
+	The bug introduced for the Mine card is that the card is added to the deck instead of
+	being added to the player's hand. 

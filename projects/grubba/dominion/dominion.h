@@ -144,4 +144,8 @@ int playCutpurse(int currentPlayer, int handPos, struct gameState *state);
 /* Implements the Cutpurse card which forces each other player to discard a copper card or reveals
     their hand if there are no copper cards present in it. */
 
+int playMine(int currentPlayer, int handPos, struct gameState *state, int choice1, int choice2);
+/* Implements the Mine card which discards/trashes a treasure card from player hand and allows
+    that player to gain a treasure card costing 3 or more coins into their hand. */
+
 #endif
