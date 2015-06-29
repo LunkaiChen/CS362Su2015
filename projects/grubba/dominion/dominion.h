@@ -140,4 +140,8 @@ int playVillage(int currentPlayer, int handPos, struct gameState *state);
 /* Implements playing the Village card which draws a card and gives the player 2 extra actions to
     take. */
 
+int playCutpurse(int currentPlayer, int handPos, struct gameState *state);
+/* Implements the Cutpurse card which forces each other player to discard a copper card or reveals
+    their hand if there are no copper cards present in it. */
+
 #endif

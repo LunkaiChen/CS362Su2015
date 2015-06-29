@@ -25,7 +25,12 @@ Village
 	into it's own function. The playVillage() function is called within the switch for
 	playing the Village card.
 
-
+Cutpurse
+	This code was moved into its own function, playCutpurse. This function is called in
+	the switch statement for playing the Village card in the cardEffect function. The
+	only significant changes in source code was removing declaration/initialization of
+	loop drivers to be local to the function playCutpurse and removing the declaration of
+	the loop driver k from cardEffect (since it was no longer being used).
 -----------------------------------------------------------------------------------------
 
 Bugs Introduced:
@@ -43,3 +48,6 @@ playAdventurer()
 playVillage()
 	The bug here is that only 1 action is given to the player from playing this card.
 
+playCutpurse()
+	The bug introduced here is that other player's hands are revealed even if there are
+	copper coins in those player's hands that have been discarded.
