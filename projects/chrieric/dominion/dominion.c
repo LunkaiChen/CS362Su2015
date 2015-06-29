@@ -1275,6 +1275,7 @@ int updateCoins(int player, struct gameState *state, int bonus)
   return 0;
 }
 
+//refactored adventure
 int adventurerNew(int *temphand, int currPlayer, struct gameState *state)
 {
 	int drawntreasure = 0;
@@ -1318,6 +1319,7 @@ int adventurerNew(int *temphand, int currPlayer, struct gameState *state)
 	return 0;
 }
 
+//refactored smithy
 int smithyNew(int handPos, int currPlayer, struct gameState *state)
 {
 	int i = 0;
@@ -1331,6 +1333,7 @@ int smithyNew(int handPos, int currPlayer, struct gameState *state)
 	return 0;
 }
 
+//refactored village
 int villageNew(int handPos, int currPlayer, struct gameState *state)
 {
 	//adds 1 card to hand
@@ -1345,6 +1348,7 @@ int villageNew(int handPos, int currPlayer, struct gameState *state)
 	return 0;
 }
 
+//refactored great hall
 int greatHallNew(int handPos, int currPlayer, struct gameState *state)
 {
 	//+1 card
@@ -1358,7 +1362,7 @@ int greatHallNew(int handPos, int currPlayer, struct gameState *state)
 	return 0;
 }
 
-
+//refactored council room
 int councilRoomNew(int handPos, int currPlayer, struct gameState *state)
 {
 	int i =0;

@@ -13,14 +13,6 @@ updates cardDrawn variable (to check if it is a treasure card)
 returns once two treasure cards have been drawn and adds them to hand
 */
 
-/*
-village
-calls drawcard method once
-sets state's numActions property to the current value + 2
-discards the current village card
-returns
-*/
-
 /*discardCard
 checks if card is to be trashed, if not it is added to played cards pile
 sets the hand property at the currPlayer/handpos location to negative 1
