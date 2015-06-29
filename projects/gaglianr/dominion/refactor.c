@@ -20,6 +20,11 @@
  * was modified to return the results of smithyCardEffect() rather than
  * performing the card effects within the switch.
  * 
+ * A few bugs were then introduced to the code.  First I targetted edge cases
+ * by changing the draw loop from '< 3' to '<= 3'.  This will cause 4 cards to
+ * be drawn.  I then changed the discardCard trashFlag to 1, so that the card 
+ * will be trashed rather than merely discarded.
+ * 
  *****************************************************************************/
 
 /******************************************************************************
