@@ -60,4 +60,5 @@ playCutpurse()
 
 playMine()
 	The bug introduced for the Mine card is that the card is added to the deck instead of
-	being added to the player's hand. 
+	being added to the player's hand.
+-----------------------------------------------------------------------------------------
