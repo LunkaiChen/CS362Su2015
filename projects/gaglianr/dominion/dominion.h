@@ -134,4 +134,7 @@ int smithyCardEffect(int currentPlayer, struct gameState *state, int handPos);
 int adventurerCardEffect(int currentPlayer, struct gameState *state);
 /* Refactored code to handle Adventurer card effect in separate method */
 
+int councilroomCardEffect(int currentPlayer, struct gameState *state, int handPos);
+/* Refactored code to handle Adventurer card effect in separate method */
+
 #endif

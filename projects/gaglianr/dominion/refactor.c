@@ -32,3 +32,14 @@
  * than performing the card effects within the switch.
  * 
  *****************************************************************************/
+
+/******************************************************************************
+ * councilroom - refactor
+ * 
+ * Refactored the councilroom card by adding a prototype to dominion.h for a new 
+ * function councilroomCardEffect().  To start with councilroomCardEffect() 
+ * contained the exact code originally found in cardEffect(). The cardEffect() 
+ * function was modified to return the results of councilroomCardEffect() rather 
+ * than performing the card effects within the switch.
+ * 
+ *****************************************************************************/
