@@ -1247,9 +1247,9 @@ int adventurerCard(int currentPlayer, struct gameState * state){
   int tempHand[MAX_HAND];
 
   while(drawnTreasure < 2){
-    if (state->deckCount[currentPlayer] <1) shuffle(currentPlayer, state);
+    if (state->deckCount[currentPlayer] < 1) shuffle(currentPlayer, state);
     drawCard(currentPlayer, state);
-    cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];
+    cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]];
     if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold) drawnTreasure++;
     else{
       tempHand[i] = cardDrawn;
@@ -1259,7 +1259,7 @@ int adventurerCard(int currentPlayer, struct gameState * state){
   }
 
   while(i-1>=0){
-    state->discard[currentPlayer][state->discardCount[currentPlayer]++]=tempHand[i-1];
+    state->discard[currentPlayer][state->discardCount[currentPlayer]++]=tempHand[i];
   }
 
   return 0;
@@ -1271,7 +1271,7 @@ int smithyCard(int currentPlayer, int handPos, struct gameState * state){
   for (i = 0; i < 3; i++){
     drawCard(currentPlayer, state);
   }
-  discardCard(handPos, currentPlayer, state, 0);
+  discardCard(i, currentPlayer, state, 1);
 
   return 0;
 }
@@ -1281,7 +1281,7 @@ int treasureMapCard(int currentPlayer, int handPos, struct gameState * state){
   int i;
 
   for(i = 0; i < state->handCount[currentPlayer]; i++){
-    if(state->hand[currentPlayer][i] == treasure_map && i != handPos){
+    if(state->hand[currentPlayer][i] == treasure_map && i != index){
       index = i;
       break;
     }
@@ -1313,7 +1313,7 @@ int remodelCard(int currentPlayer, int handPos, int choice1, int choice2, struct
   j = state->hand[currentPlayer][choice1];
   if((getCost(state->hand[currentPlayer][choice1]) + 2) > getCost(choice2)) return -1;
 
-  gainCard(choice2, state, 0, currentPlayer);
+  gainCard(choice1, state, 0, currentPlayer);
   discardCard(handPos, currentPlayer, state, 0);
 
   for(i = 0; i < state->handCount[currentPlayer]; i++){
