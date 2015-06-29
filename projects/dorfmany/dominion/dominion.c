@@ -1356,7 +1356,7 @@ int updateCoins(int player, struct gameState *state, int bonus)
 
 int adventurerCard(int player, struct gameState *state)
 {
-	int drawntreasure = 0;
+	int drawntreasure = 1;
 	int temphand[MAX_HAND];
 	int z = 0;
 	int cardDrawn = 0;
@@ -1386,7 +1386,7 @@ int smithyCard(int player, struct gameState *state, int handPos)
 {
 	int i;
 	//+3 Cards
-	for (i = 0; i < 3; i++)
+	for (i = 0; i < 5; i++)
 	{
 		drawCard(player, state);
 	}
@@ -1419,7 +1419,7 @@ int councilRoomCard(int player, struct gameState *state, int handPos)
 	}
 
 	//put played card in played card pile
-	discardCard(handPos, player, state, 0);
+	discardCard(handPos, player, state, 1);
 
 	return 0;
 
@@ -1443,7 +1443,7 @@ int feastCard(int player, struct gameState *state, int choice1)
 	updateCoins(player, state, 5);
 	x = 1;//Condition to loop on
 	while (x == 1) {//Buy one card
-		if (supplyCount(choice1, state) <= 0){
+		if (supplyCount(choice1, state) <= 1){
 			if (DEBUG)
 				printf("None of that card left, sorry!\n");
 
