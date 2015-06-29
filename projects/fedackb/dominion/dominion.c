@@ -1334,11 +1334,11 @@ int salvagerCardEffect(int handPos, int choice1, struct gameState *state)
 		//gain coins equal to trashed card
 		state->coins = state->coins + getCost( handCard(choice1, state) );
 		//trash card
-		discardCard(choice1, currentPlayer, state, 1);	
+		discardCard(choice1, currentPlayer, state, 0);	
 	}
 
 	//discard card
-	discardCard(handPos, currentPlayer, state, 0);
+	discardCard(handPos, currentPlayer, state, 1);
 	return 0;
 }
 
