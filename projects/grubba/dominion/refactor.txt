@@ -1,0 +1,64 @@
+Assignment 2 - Refactoring Cards
+Cards refactored: Smithy, Adventurer, 
+Bugs introduced: playSmithy(), Adventurer, 
+-----------------------------------------------------------------------------------------
+
+Cards Refactored:
+
+Smithy
+	This code implementing this card was refactored into it's own function, playSmithy().
+	This function takes all necessary arguments for implementing the smithy card, that is
+	arguments for currentPlayer, handPos and state. The implementation of this card didn't
+	change at all in the refactor, it was just moved into a function and that function is
+	called within the switch statement for playing the Smithy card.
+
+Adventurer
+	This code was moved into it's own function, playAdventurer(). The implementation of
+	this card was copied into the function and the only real change was to declare the
+	cardDrawn variable locally in the function and remove it's declaration from the
+	cardEffect function. This function is called within the switch statement for playing
+	the Adventurer card.
+
+Village
+	This code was moved into its own function, playVillage(). The implemention was
+	unchanged and there was no real significant change necessary to move this card code
+	into it's own function. The playVillage() function is called within the switch for
+	playing the Village card.
+
+Cutpurse
+	This code was moved into its own function, playCutpurse. This function is called in
+	the switch statement for playing the Village card in the cardEffect function. The
+	only significant changes in source code was removing declaration/initialization of
+	loop drivers to be local to the function playCutpurse and removing the declaration of
+	the loop driver k from cardEffect (since it was no longer being used).
+
+Mine
+	This code was moved into its own function, playMine. This function is called in the
+	switch statement for playing the Mine card within the cardEffect function. The only
+	significant change in source code to this card's implementation was to declare some 
+	loop drivers i and j locally within the function playMine().
+-----------------------------------------------------------------------------------------
+
+Bugs Introduced:
+
+playSmithy()
+	This code for the Smithy card has a subtle bug where an extra, fourth, card is drawn
+	to the player's hand. This is a result of the loop not stopping when it should and 
+	running a single extra time.
+
+playAdventurer()
+	The bug in the code for this card/function results in an extra treasure card being
+	drawn. This is because the while loop that controls drawing treasure cards runs 
+	more times than it should.
+
+playVillage()
+	The bug here is that only 1 action is given to the player from playing this card.
+
+playCutpurse()
+	The bug introduced here is that other player's hands are revealed even if there are
+	copper coins in those player's hands that have been discarded.
+
+playMine()
+	The bug introduced for the Mine card is that the card is added to the deck instead of
+	being added to the player's hand.
+-----------------------------------------------------------------------------------------
