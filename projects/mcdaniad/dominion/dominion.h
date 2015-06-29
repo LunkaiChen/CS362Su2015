@@ -131,4 +131,7 @@ int getWinners(int players[MAX_PLAYERS], struct gameState *state);
 int cardSmithy(int handPos, struct gameState *state);
 /*Play Smithy card from player's hand */
 
+int cardAdventurer(struct gameState *state, int temphand[]);
+/*Play Adventurer card from player's hand */
+
 #endif
