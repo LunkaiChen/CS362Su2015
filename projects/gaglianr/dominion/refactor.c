@@ -36,7 +36,7 @@
  * function was modified to return the results of adventurerCardEffect() rather 
  * than performing the card effects within the switch.
  * 
- * A few bugs were then introduced to the code.  I first modififed the initial
+ * A few bugs were then introduced to the code.  I first modified the initial
  * value of z to 1.  This will cause the temp hand to always register 1 larger
  * than reality.I then removed the code that shuffled the discard pile into
  * the players deck if the deck is empty.  Finally, during the discard of the
@@ -64,6 +64,14 @@
  * contained the exact code originally found in cardEffect(). The cardEffect() 
  * function was modified to return the results of minionCardEffect() rather 
  * than performing the card effects within the switch.
+ * 
+ * A few bugs were then introduced to the code.  I first moved the code to 
+ * discard the minion from hand until after the choice code executed. This will 
+ * discard a random card after the minion actions are over. I then removed the
+ * excclusion of the player from discarding and redrawing if hand size is
+ * greater than 4.  This means the current player will perform the action
+ * twice. I made a substitution for the other player discard to point at the
+ * variable i, rather than j, which I changed to be initialized to 1.
  * 
  *****************************************************************************/
 
