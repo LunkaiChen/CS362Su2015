@@ -1,13 +1,16 @@
 CFLAGS = -Wall -fpic -coverage -lm
 
+cards.o: cards.c cards.h
+	gcc -c cards.c -g $(CFLAGS)
+
 rngs.o: rngs.h rngs.c
 	gcc -c rngs.c -g  $(CFLAGS)
 
-dominion.o: dominion.h dominion.c rngs.o
-	gcc -c dominion.c -g  $(CFLAGS)
+dominion.o: dominion.h dominion.c rngs.o cards.o
+	gcc -c dominion.c -g  cards.o $(CFLAGS)
 
 playdom: dominion.o playdom.c
-	gcc -o playdom playdom.c -g dominion.o rngs.o $(CFLAGS)
+	gcc -o playdom playdom.c -g dominion.o rngs.o cards.o $(CFLAGS)
 
 testDrawCard: testDrawCard.c dominion.o rngs.o
 	gcc -o testDrawCard -g  testDrawCard.c dominion.o rngs.o $(CFLAGS)
@@ -45,8 +48,8 @@ cardtest1: cardtest1.c dominion.o rngs.o
 	gcc -o cardtest1 -g cardtest1.c dominion.o rngs.o $(CFLAGS)
 
 	
-player: player.c interface.o
-	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
+player: player.c interface.o cards.o
+	gcc -o player player.c -g  cards.o dominion.o rngs.o interface.o $(CFLAGS)
 
 oldAll: playdom player testDrawCard testBuyCard badTestDrawCard unittest1 unittest2 unittest3 unittest4
 

@@ -834,15 +834,8 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 		
     case smithy:
-      //+3 Cards
-      for (i = 0; i < 3; i++)
-	{
-	  drawCard(currentPlayer, state);
-	}
-			
-      //discard card from hand
-      discardCard(handPos, currentPlayer, state, 0);
-      return 0;
+    	//refactored to place Smithy card code in its own function
+    	cardSmithy(handPos, state);
 		
     case village:
       //+1 Card
@@ -1332,6 +1325,24 @@ int updateCoins(int player, struct gameState *state, int bonus)
 
   return 0;
 }
+
+//adds 3 cards to the user's hand
+int cardSmithy(int handPos, struct gameState *state)
+{
+	int i, currentPlayer;
+	currentPlayer = whoseTurn(state);
+
+	for (i = 0; i < 3; ++i)
+	{
+		drawCard(currentPlayer, state);
+	}
+
+	//discard Smithy card from hand
+	//BUG: trashes Smithy card instead of placing it in the Played pile
+	discardCard(handPos, currentPlayer, state, 1);
+	
+	return 0;
+ }
 
 
 //end of dominion.c
