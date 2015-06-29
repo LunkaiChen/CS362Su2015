@@ -1,0 +1,37 @@
+mithy --------------- :
+A for loop runs three times, each time calling "drawCard" to draw a card for the player.
+Then it calls discardCard, sending in the same variables it got and 0 so that the smithy card is not trashed.
+int playSmithy(int handPos, int currentPlayer, struct gameState *state)
+
+--------------- adventure --------------- 
+First creates an int array called temphand to hold non-treasure cards that may be drawn.
+Then a while loop runs until 2 treasure cards have been drawn.
+In first while loop:
+-If the deck is empty it is shuffled
+-A card is drawn and put into the player's hand with drawcard(). If the card is treasure, drawntreasure incremented.
+Else, temphand[index of drawn adventure cards] becomes that card and the player's hand is decremented, 
+which removes the card from the player's hand.
+Then another while loop discards the "drawn treasures." 
+
+--------------- discardCard() --------------- 
+discardCard() works by first checking if the trashFlag is less than 1 (0 was sent in) meaning that the card should not be thrown
+away but instead added to the played pile. If so, state's member playedCards, which uses state's member playedCardCount 
+as its array index, becomes whatever state's member multi-dimensional int array "hand" has at its position for [currentPlayer][handPos].
+Now the card is in the player's "played" pile.
+
+Regaurdless of the above:
+Then that card in the player's hand is set to -1, which is not the number for any card in the game (from enumCard in dominion.h). 
+
+Then, it is checked whether the hand is either empty or contains only 1 more card 
+by comparing handPos to the player's handCount. If yes,the player's handCount is decremented, removing the card. 
+Else, the discarded card is replaced with the last card (indexed below it)
+in the player's current hand . This is done by replacing the card at the current
+handPos (which should be the discarded card) with the card card at the current (handCount - 1) position.
+
+--------------- updateCoins() --------------- 
+ 
+ updateCoins works by first setting the member of the struct state (a gamestate struct, defined in dominion.h) called coins to 0, 
+ then using a for-loop to count up the old total amount of money the player had, then adding the "bonus" (new coin) that was sent 
+ the last parameter to the total. 
+
+
