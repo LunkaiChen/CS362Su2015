@@ -1341,13 +1341,17 @@ int minionCardEffect(int currentPlayer, struct gameState *state, int handPos, in
 
 int stewardCardEffect(int currentPlayer, struct gameState *state, int handPos, int choice1, int choice2, int choice3)
 {
-  if (choice1 == 1)
+  int i;
+  
+  if (choice3 == 1)
     {
       //+2 cards
-      drawCard(currentPlayer, state);
-      drawCard(currentPlayer, state);
+      for (i = 1; i < 2; i++)
+      {
+	drawCard(currentPlayer, state);
+      }
     }
-  else if (choice1 == 2)
+  else if (choice2 == 2)
     {
       //+2 coins
       state->coins = state->coins + 2;
@@ -1355,12 +1359,12 @@ int stewardCardEffect(int currentPlayer, struct gameState *state, int handPos, i
   else
     {
       //trash 2 cards in hand
-      discardCard(choice2, currentPlayer, state, 1);
-      discardCard(choice3, currentPlayer, state, 1);
+      discardCard(choice1, currentPlayer, state, 0);
+      discardCard(choice3, currentPlayer, state, 0);
     }
 		    
   //discard card from hand
-  discardCard(handPos, currentPlayer, state, 0);
+  discardCard(handPos, currentPlayer, state, 1);
   return 0;
 }
 

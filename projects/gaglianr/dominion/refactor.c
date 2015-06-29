@@ -84,4 +84,11 @@
  * function was modified to return the results of stewardCardEffect() rather 
  * than performing the card effects within the switch.
  * 
+ * A few bugs were then introduced to the code.  I first swapped the trashFlag
+ * for the 2 trashed cards, and the 1 discarded card so that the trashed cards
+ * will be discarded, and the discarded card will be trashed.I then moved the
+ * choices around so that choice1 became choice3, and choice2 and choice1 were
+ * swapped. Finally I replaced the draw 2 functionality with a loop that only
+ * loops one time, using an error in the edge case.
+ * 
  *****************************************************************************/
