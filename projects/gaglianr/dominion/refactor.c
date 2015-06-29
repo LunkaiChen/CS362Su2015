@@ -36,6 +36,13 @@
  * function was modified to return the results of adventurerCardEffect() rather 
  * than performing the card effects within the switch.
  * 
+ * A few bugs were then introduced to the code.  I first modififed the initial
+ * value of z to 1.  This will cause the temp hand to always register 1 larger
+ * than reality.I then removed the code that shuffled the discard pile into
+ * the players deck if the deck is empty.  Finally, during the discard of the
+ * temporary hand, I removed the '++' to cause the last card to be discarded
+ * rather than the temp hand card.
+ * 
  *****************************************************************************/
 
 /******************************************************************************
