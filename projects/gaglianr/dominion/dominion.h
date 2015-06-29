@@ -135,6 +135,9 @@ int adventurerCardEffect(int currentPlayer, struct gameState *state);
 /* Refactored code to handle Adventurer card effect in separate method */
 
 int councilroomCardEffect(int currentPlayer, struct gameState *state, int handPos);
-/* Refactored code to handle Adventurer card effect in separate method */
+/* Refactored code to handle Council Room card effect in separate method */
+
+int minionCardEffect(int currentPlayer, struct gameState *state, int handPos, int choice1, int choice2);
+/* Refactored code to handle Minion card effect in separate method */
 
 #endif

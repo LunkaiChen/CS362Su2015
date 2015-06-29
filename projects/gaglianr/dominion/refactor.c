@@ -43,3 +43,14 @@
  * than performing the card effects within the switch.
  * 
  *****************************************************************************/
+
+/******************************************************************************
+ * minion - refactor
+ * 
+ * Refactored the minion card by adding a prototype to dominion.h for a new 
+ * function minionCardEffect().  To start with minionCardEffect() 
+ * contained the exact code originally found in cardEffect(). The cardEffect() 
+ * function was modified to return the results of minionCardEffect() rather 
+ * than performing the card effects within the switch.
+ * 
+ *****************************************************************************/
