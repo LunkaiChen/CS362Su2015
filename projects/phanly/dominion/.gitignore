@@ -1,0 +1,7 @@
+.DS_Store
+*.dSYM/
+*.gcda
+*.gcno
+*.o
+player
+playdom
