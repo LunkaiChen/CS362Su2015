@@ -676,6 +676,20 @@ int adventurer_refactor(int currentPlayer, struct gameState *state) {
       return 0;
 }
 
+int smithy_refactor(int currentPlayer, struct gameState *state, int handPos) {
+      //+3 Cards
+      int i;
+      for (i = 1; i < 3; i++)
+	{
+	  drawCard(currentPlayer, state);
+	}
+			
+      //discard card from hand
+      discardCard(handPos, currentPlayer, state, 0);
+
+      return 0;
+}
+
 int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus)
 {
   int i;
@@ -847,15 +861,10 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 		
     case smithy:
-      //+3 Cards
-      for (i = 0; i < 3; i++)
-	{
-	  drawCard(currentPlayer, state);
-	}
-			
-      //discard card from hand
-      discardCard(handPos, currentPlayer, state, 0);
-      return 0;
+		if((smithy_refactor(currentPlayer, state, handPos)) == 0)	
+				return 0;
+		else
+				exit(1);
 		
     case village:
       //+1 Card
