@@ -818,15 +818,8 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
     	cardSmithy(handPos, state);
 		
     case village:
-      //+1 Card
-      drawCard(currentPlayer, state);
-			
-      //+2 Actions
-      state->numActions = state->numActions + 2;
-			
-      //discard played card from hand
-      discardCard(handPos, currentPlayer, state, 0);
-      return 0;
+    	//refactored to place Smithy card code in its own function
+		cardVillage(handPos, state);
 		
     case baron:
       state->numBuys++;//Increase buys by 1!
@@ -1374,6 +1367,20 @@ int cardAdventurer(struct gameState *state, int temphand[])
     return 0;
 }
 
+//draws a card and adds +2 actions
+int cardVillage(int handPos, struct gameState *state)
+{	
+	int currentPlayer;
+
+	currentPlayer = whoseTurn(state);
+    
+    drawCard(currentPlayer, state);
+			
+    state->numActions = state->numActions++;
+			
+    discardCard(handPos, currentPlayer, state, 0);
+
+    return 0;
+}
 
 //end of dominion.c
-

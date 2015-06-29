@@ -17,3 +17,10 @@ BUG: Removed copper from the treasure check, so drawing a card of that type will
 the drawntreasure variable.
 
 -----
+
+Village
+
+Created cardVillage() to implement Village in its own function. Function is declared in
+dominion.h and defined at the end of dominion.c.
+
+BUG: Increments number of actions instead of adding 2.
