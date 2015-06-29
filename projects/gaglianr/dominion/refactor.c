@@ -21,3 +21,14 @@
  * performing the card effects within the switch.
  * 
  *****************************************************************************/
+
+/******************************************************************************
+ * adventurer - refactor
+ * 
+ * Refactored the adventurer card by adding a prototype to dominion.h for a new 
+ * function adventurerCardEffect().  To start with adventurerCardEffect() 
+ * contained the exact code originally found in cardEffect(). The cardEffect() 
+ * function was modified to return the results of adventurerCardEffect() rather 
+ * than performing the card effects within the switch.
+ * 
+ *****************************************************************************/
