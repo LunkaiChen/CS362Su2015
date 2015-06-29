@@ -6,6 +6,7 @@
 #include <stdlib.h>
 
 int adventurerCardEffect(struct gameState *state);
+int salvagerCardEffect(int handPos, int choice1, struct gameState *state);
 int smithyCardEffect(int handPos, struct gameState *state);
 int villageCardEffect(int handPos, struct gameState *state);
 
@@ -1131,20 +1132,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 		
     case salvager:
-      //+1 buy
-      state->numBuys++;
-			
-      if (choice1)
-	{
-	  //gain coins equal to trashed card
-	  state->coins = state->coins + getCost( handCard(choice1, state) );
-	  //trash card
-	  discardCard(choice1, currentPlayer, state, 1);	
-	}
-			
-      //discard card
-      discardCard(handPos, currentPlayer, state, 0);
-      return 0;
+		return salvagerCardEffect(handPos, choice1, state);
 		
     case sea_hag:
       for (i = 0; i < state->numPlayers; i++){
@@ -1321,6 +1309,26 @@ int adventurerCardEffect(struct gameState *state)
 		state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
 		z=z-1;
 	}
+	return 0;
+}
+
+int salvagerCardEffect(int handPos, int choice1, struct gameState *state)
+{
+	int currentPlayer = whoseTurn(state);
+
+	//+1 buy
+	state->numBuys++;
+
+	if (choice1)
+	{
+		//gain coins equal to trashed card
+		state->coins = state->coins + getCost( handCard(choice1, state) );
+		//trash card
+		discardCard(choice1, currentPlayer, state, 1);	
+	}
+
+	//discard card
+	discardCard(handPos, currentPlayer, state, 0);
 	return 0;
 }
 
