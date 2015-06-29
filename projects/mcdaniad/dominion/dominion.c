@@ -1127,12 +1127,8 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 		
     case outpost:
-      //set outpost flag
-      state->outpostPlayed++;
-			
-      //discard card
-      discardCard(handPos, currentPlayer, state, 0);
-      return 0;
+    	//refactored to place Outpost card code in its own function
+    	outpostCard(handPos, state);
 		
     case salvager:
       //+1 buy
@@ -1378,6 +1374,22 @@ int cardVillage(int handPos, struct gameState *state)
 			
     state->numActions = state->numActions++;
 			
+    discardCard(handPos, currentPlayer, state, 0);
+
+    return 0;
+}
+
+//sets the outpost flag
+int outpostCard(int handPos, struct gameState *state)
+{
+	int currentPlayer;
+
+	currentPlayer = whoseTurn(state);
+	
+	//set outpost flag
+	state->outpostPlayed++;
+
+	//discard card
     discardCard(handPos, currentPlayer, state, 0);
 
     return 0;

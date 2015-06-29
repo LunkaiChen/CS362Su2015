@@ -24,3 +24,10 @@ Created cardVillage() to implement Village in its own function. Function is decl
 dominion.h and defined at the end of dominion.c.
 
 BUG: Increments number of actions instead of adding 2.
+
+-----
+
+Outpost
+
+Created cardOutpost() to implement Outpost in its own function. Function is declared in
+dominion.h and defined at the end of dominion.c.
