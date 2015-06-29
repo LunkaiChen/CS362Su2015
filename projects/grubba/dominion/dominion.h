@@ -136,4 +136,8 @@ int playAdventurer(int currentPlayer, int drawntreasure, struct gameState *state
 /* Implements playing the Adventurer card which draws cards until 2 treasure cards are drawn and then
     discards all other cards that were drawn that were not treasure cards. */
 
+int playVillage(int currentPlayer, int handPos, struct gameState *state);
+/* Implements playing the Village card which draws a card and gives the player 2 extra actions to
+    take. */
+
 #endif

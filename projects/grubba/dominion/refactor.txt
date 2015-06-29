@@ -19,6 +19,12 @@ Adventurer
 	cardEffect function. This function is called within the switch statement for playing
 	the Adventurer card.
 
+Village
+	This code was moved into its own function, playVillage(). The implemention was
+	unchanged and there was no real significant change necessary to move this card code
+	into it's own function. The playVillage() function is called within the switch for
+	playing the Village card.
+
 
 -----------------------------------------------------------------------------------------
 
@@ -33,3 +39,7 @@ playAdventurer()
 	The bug in the code for this card/function results in an extra treasure card being
 	drawn. This is because the while loop that controls drawing treasure cards runs 
 	more times than it should.
+
+playVillage()
+	The bug here is that only 1 action is given to the player from playing this card.
+
