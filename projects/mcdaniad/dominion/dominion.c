@@ -750,7 +750,8 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 			
     case gardens:
-      return -1;
+        //refactored to place Adventurer card code in its own function
+    	cardGardens(handPos, state);
 			
     case mine:
       j = state->hand[currentPlayer][choice1];  //store card we will trash
@@ -1379,13 +1380,27 @@ int cardVillage(int handPos, struct gameState *state)
     return 0;
 }
 
+//plays the Gardens card
+int cardGardens(int handPos, struct gameState *state)
+{
+	int currentPlayer;
+	currentPlayer = whoseTurn(state);
+
+	drawCard(currentPlayer, state);
+	
+	//discard Gardens card from hand
+	discardCard(handPos, currentPlayer, state, 0);
+	
+	return 0;
+}
+
 //sets the outpost flag
 int outpostCard(int handPos, struct gameState *state)
 {
 	int currentPlayer;
 
 	currentPlayer = whoseTurn(state);
-	
+
 	//set outpost flag
 	state->outpostPlayed++;
 

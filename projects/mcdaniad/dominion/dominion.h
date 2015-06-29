@@ -137,6 +137,9 @@ int cardAdventurer(struct gameState *state, int temphand[]);
 int cardVillage(int handPos, struct gameState *state);
 /*Play Village card from player's hand*/
 
+int cardGardens(int handPos, struct gameState *state);
+/*Play Gardens card from player's hand*/
+
 int outpostCard(int handPos, struct gameState *state);
 /*Play Outpost card from player's hand*/
 

@@ -27,6 +27,15 @@ BUG: Increments number of actions instead of adding 2.
 
 -----
 
+Gardens
+
+Created cardGardens() to implement Gardens in its own function. Function is declared in
+dominion.h and defined at the end of dominion.c.
+
+BUG: Allows play (Gardens is a Victory card), draws 1 card for the player, and does not return an error.
+
+-----
+
 Outpost
 
 Created cardOutpost() to implement Outpost in its own function. Function is declared in
