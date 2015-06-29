@@ -1,1 +1,1 @@
-dummy file: refactor.txt
+Assignment2 requirement 3 is found in refactor.c, per updated requirements.
