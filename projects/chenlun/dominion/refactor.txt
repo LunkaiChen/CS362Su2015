@@ -1,0 +1,26 @@
+Assigment 1 Lunkai Chen 07/01/2015 
+dominion.c: 
+Refactored case Feast from cardEffect() to a new function 
+	int effectFeast(struct gameState *state, int handPos, int currentPlayer, int choice1)
+
+	
+Refactored case GreatHall from cardEffect() to a new function 
+	int effectGreatHall(struct gameState *state, int handPos, int currentPlayer)
+
+	
+Refactored case Steward from cardEffect() to a new function 
+	int effectSteward(struct gameState *state, int handPos, int currentPlayer, int choice1)
+
+	
+Refactored case Embargo from cardEffect() to a new function 
+	int effectEmbargo(struct gameState *state, int handPos, int currentPlayer, int choice1)
+
+	
+Refactored case Salvager from cardEffect() to a new function 
+	int effectSalvager(struct gameState *state, int handPos, int currentPlayer, int choice1)
+
+
+dominion.h:
+	
+Added the declarations of the new functions.
+
